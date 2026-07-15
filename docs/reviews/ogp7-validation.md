@@ -8,26 +8,25 @@ Base: `main@446d8c9ffd07cf0893d86df4b19e0157da399606`
 
 Initial review HEAD: `15429d09fb7c840ef32391976988757bbd4257ed`
 
-Validated content HEAD: `2efd163b29f4e90f71cc17c3ef4fc18e05b06220`
+Validated content HEAD: `7e51f0a67d3901deb2a16ae2e8c91c55b45d8160`
 
 ## Evidence model
 
-The validated content HEAD contains the runtime integration, four public CLIs, the shared helper, fixtures, unit tests, and all owner-review corrections. This evidence document is committed afterward as a separate evidence envelope.
+The validated content HEAD contains the runtime integration, four public CLIs, shared helpers, fixtures, unit tests, and all owner-review corrections. This document is committed afterward as the evidence envelope.
 
 ## Owner-review findings
 
 | ID | Severity | Finding | Disposition |
 | --- | --- | --- | --- |
-| OR-01 | P1 | An invalid custom required-block regex could raise an uncaught `re.error` and exit `1`, violating the stable `0/2/3` CLI contract. | Compile all required-block regexes during rules loading, convert invalid patterns to `ToolError`, return machine-readable operational output on stderr, and add a regression test. |
-| OR-02 | P1 | The manifest builder accepted an incomplete QA category map and did not verify that `score_total` equalled the six weighted category scores. | Require the six canonical categories with their maximum weights, reject unknown or missing categories, validate category values, reconcile the total, and add regression tests. |
-| OR-03 | P2 | Initial evidence did not execute the operational-exit contract for all four CLIs or the refusal to overwrite an existing package directory. | Add a dedicated owner-review regression suite covering missing inputs for all CLIs and existing package-directory refusal. |
-| OR-04 | P2 | The initial evidence statement grouped all decode failures as operational errors, although a decodable-path raster mismatch inside manifest validation is a deterministic validation failure. | Clarify the output contract: invocation and filesystem failures use stderr/exit `3`; invalid supplied content and contract mismatches use stdout/exit `2`. |
+| OR-01 | P1 | An invalid custom required-block regex could raise an uncaught `re.error` and exit `1`, violating the stable `0/2/3` contract. | Precompile extension regexes, convert invalid patterns to `ToolError`, emit JSON on stderr, and test exit `3`. |
+| OR-02 | P1 | The manifest builder accepted an incomplete QA category map and did not reconcile `score_total` with the six weighted categories. | Require all six canonical categories and limits, reject unknown or missing categories, and verify the category sum. |
+| OR-03 | P2 | Initial evidence did not execute operational exits for all four CLIs or refusal to overwrite an existing package directory. | Add dedicated regression tests for missing inputs and existing package output. |
+| OR-04 | P2 | Initial evidence grouped all raster decode failures as operational errors. | Clarify that supplied-content and contract mismatches are exit `2`; invocation and inaccessible primary inputs are exit `3`. |
+| OR-05 | P1 | Standard `argparse` usage and type errors emitted plain text and exit `2`, bypassing the machine-readable CLI contract. | Add `ToolArgumentParser`, emit JSON operational reports on stderr, normalize parse errors to exit `3`, and test all four parsers. |
 
-The initial review HEAD was invalidated. All checks below were repeated after corrections.
+The initial review HEAD was invalidated. All checks below were repeated after the corrections.
 
-## Scope
-
-Validated artifacts:
+## Validated artifacts
 
 - `skill/obsidian-gold-image-pipeline/SKILL.md`;
 - `skill/obsidian-gold-image-pipeline/requirements.txt`;
@@ -41,7 +40,7 @@ Validated artifacts:
 - `tests/test_tooling_review.py`;
 - positive and negative prompt and manifest fixtures.
 
-## Commands
+## Validation commands
 
 ```bash
 python3 -m py_compile \
@@ -96,7 +95,7 @@ python3 skill/obsidian-gold-image-pipeline/scripts/package_asset.py \
 
 ## Results
 
-### Structural and unit checks
+### Structural and CLI checks
 
 ```text
 python=3.13.5
@@ -104,30 +103,25 @@ pillow=12.2.0
 py_compile=PASS
 cli_tools=4
 cli_help=4
-unit_tests=17
+unit_tests=18
 unit_tests_result=PASS
-```
-
-All four help commands exited `0`. Passing CLI commands produced no stderr output. The negative prompt fixture returned a machine-readable validation report on stdout and exited `2`, as specified.
-
-The owner-review regression suite additionally confirmed:
-
-```text
-invalid_custom_regex_exit=3
+parse_argument_errors_exit=3
+parse_argument_errors_machine_json=True
 missing_input_exit_validate_prompt=3
 missing_input_exit_inspect_image=3
 missing_input_exit_build_manifest=3
 missing_input_exit_package_asset=3
-existing_package_directory_rejected=True
-qa_category_completeness=True
-qa_score_total_reconciled=True
+invalid_custom_regex_exit=3
 ```
+
+All help commands exited `0`. Successful integration commands produced no stderr. The negative prompt fixture emitted machine-readable JSON on stdout and exited `2`.
 
 ### Prompt validation
 
 ```text
 positive_prompt_exit=0
 negative_prompt_exit=2
+required_semantic_blocks=13
 controlled_gold_reflections_allowed=True
 mirror_or_chrome_reflections_rejected=True
 case_and_inflection_normalization=True
@@ -136,7 +130,7 @@ edit_contract_fields=5
 
 ### Raster inspection
 
-The generated technical fixture was a 256x256 RGB PNG with a pure-black background, a dark object, and a restrained gold region.
+The deterministic technical fixture was a 256x256 RGB PNG with pure-black corners, a dark object, and a restrained gold region.
 
 ```text
 width=256
@@ -155,7 +149,7 @@ selected_output_sha256=0b6a84651a833b3af79d788ebad53a23edcb76cd0a378bf2f2bc3e124
 
 ### Manifest reproducibility
 
-Both manifest runs produced identical bytes.
+Two runs with the same specification and raster produced identical bytes.
 
 ```text
 manifest_repeatable=True
@@ -178,6 +172,7 @@ package_files=5
 source_preserved=True
 selected_output_resolves=True
 existing_output_rejected=True
+successful_pipeline_stderr_bytes=0
 ```
 
 Package contents:
@@ -206,10 +201,10 @@ input_overwrite_protection=True
 ```text
 0 = deterministic checks passed
 2 = supplied content or deterministic contract validation failed
-3 = invocation, configuration, input access, decode-at-inspection, output collision, or filesystem operation failed
+3 = argument, configuration, input access, primary inspection decode, output collision, or filesystem operation failed
 ```
 
-Exit `0` and `2` reports are machine-readable on stdout. Operational exit `3` reports are machine-readable on stderr. The manifest builder treats a reachable but invalid selected raster or declared metadata mismatch as content validation failure `2`; the raster inspector treats inability to decode its primary input as operational failure `3`.
+Exit `0` and `2` reports are machine-readable on stdout. Exit `3` reports are machine-readable on stderr. The manifest builder treats a reachable but invalid selected raster or declared metadata mismatch as content validation failure `2`; the raster inspector treats inability to access or decode its primary input as operational failure `3`.
 
 ## Automation boundary
 
@@ -227,4 +222,4 @@ Corner sampling does not prove global background uniformity. The non-black bound
 
 ## Validation conclusion
 
-OGP#7 meets its deterministic validation, manifest, and packaging scope. All owner-review findings are corrected. The scripts are non-destructive, produce stable reports and exit codes, and do not claim authority over visual acceptance. Actual accepted, repairable, and rejected visual evidence remains in OGP#8.
+OGP#7 meets its deterministic validation, manifest, and packaging scope. All five owner-review findings are corrected. The scripts are non-destructive, produce stable reports and exit codes, and do not claim authority over visual acceptance. Actual accepted, repairable, and rejected visual evidence remains in OGP#8.
