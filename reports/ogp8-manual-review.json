@@ -1,0 +1,24 @@
+{
+  "schema_version": "1.0.0",
+  "task": "OGP#8",
+  "review_mode": "manual_visual_rubric",
+  "automated_aesthetic_claim": false,
+  "reviewer": "project owner-review agent",
+  "cases": [
+    {"id":"accepted-01-symmetric-orb","score_total":92,"critical_defects":[],"verdict":"accepted"},
+    {"id":"accepted-02-hollow-portal","score_total":91,"critical_defects":[],"verdict":"accepted"},
+    {"id":"accepted-03-machinery","score_total":90,"critical_defects":[],"verdict":"accepted"},
+    {"id":"accepted-04-falcon","score_total":88,"critical_defects":[],"verdict":"accepted"},
+    {"id":"accepted-05-neural-core","score_total":93,"critical_defects":[],"verdict":"accepted"},
+    {"id":"repairable-01-edge-crop","score_total":80,"critical_defects":[],"diagnostic_codes":["composition_error"],"verdict":"repairable"},
+    {"id":"repairable-02-weak-light","score_total":78,"critical_defects":[],"diagnostic_codes":["lighting_error"],"verdict":"repairable"},
+    {"id":"repairable-03-gold-dominance","score_total":74,"critical_defects":[],"diagnostic_codes":["gold_ratio_error"],"verdict":"repairable"},
+    {"id":"repairable-04-stray-artifact","score_total":82,"critical_defects":[],"diagnostic_codes":["artifact_error"],"verdict":"repairable"},
+    {"id":"repairable-05-weak-silhouette","score_total":72,"critical_defects":[],"diagnostic_codes":["silhouette_error"],"verdict":"repairable"},
+    {"id":"rejected-01-environment-multiple","score_total":48,"critical_defects":["composition_error","background_error"],"verdict":"rejected"},
+    {"id":"rejected-02-stone-texture","score_total":54,"critical_defects":["material_error","style_drift"],"verdict":"rejected"},
+    {"id":"rejected-03-chrome","score_total":58,"critical_defects":["material_error","style_drift"],"verdict":"rejected"},
+    {"id":"rejected-04-extra-colors-light-bg","score_total":38,"critical_defects":["background_error","style_drift"],"verdict":"rejected"},
+    {"id":"rejected-05-crop-pseudotext","score_total":42,"critical_defects":["composition_error","text_or_logo_error"],"verdict":"rejected"}
+  ]
+}
