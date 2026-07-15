@@ -78,3 +78,4 @@ The task is complete only when:
 - the actual final image is visible or directly accessible in the user response.
 
 A tool success without visible delivery is `DELIVERY_MISSING`, not completion.
+
