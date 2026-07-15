@@ -1,0 +1,22 @@
+{
+  "archive_reproducible": true,
+  "archive_root": "obsidian-gold-image-pipeline",
+  "cli_help_commands": 4,
+  "distribution_contract": "1.0.0",
+  "external_tool_dependencies": [],
+  "implicit_invocation": true,
+  "install_destination": ".agents/skills/obsidian-gold-image-pipeline",
+  "local_contract_harness_tests": 10,
+  "package_type": "direct_skill_bundle",
+  "prompt_validation_exit": 0,
+  "python_dependencies": [
+    "Pillow>=10.0,<13.0"
+  ],
+  "release_candidate": "0.1.0-rc.1",
+  "release_published": false,
+  "repository_only_files_rejected": true,
+  "safe_archive_layout": true,
+  "schema_version": "1.0.0",
+  "status": "pass",
+  "task": "OGP#10"
+}
