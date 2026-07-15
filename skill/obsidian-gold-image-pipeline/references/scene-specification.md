@@ -26,7 +26,9 @@ lighting
 background
 composition
 negative_space
-fidelity
+subject_fidelity
+silhouette_fidelity
+composition_fidelity
 must_preserve
 must_remove
 must_not_add
@@ -72,6 +74,14 @@ Specify subject-specific planar simplification while retaining recognition featu
 
 Specify which structural areas are obsidian and which areas receive gold. Gold placement must have semantic or compositional purpose.
 
+### Fidelity
+
+Copy the three fidelity values from the Transformation Contract without collapsing them:
+
+- `subject_fidelity` controls semantic identity and recognition features;
+- `silhouette_fidelity` controls contour, proportion, and pose;
+- `composition_fidelity` controls source framing only and cannot preserve an environment or multi-object arrangement.
+
 ### Lighting
 
 Use the canonical model from ADR 0004 and `style-tokens.md`.
@@ -93,6 +103,7 @@ A Scene Specification is incomplete when it lacks:
 - silhouette guidance;
 - explicit obsidian and gold placement;
 - gold ratio target;
+- all three fidelity values;
 - canonical lighting;
 - pure black background;
 - remove and must-not-add constraints;
