@@ -7,204 +7,41 @@
     "runtime_anchors": 3
   },
   "coverage_cases": [
-    {
-      "coverage_class": "simple_symmetric_object",
-      "file": "evals/fixtures/references/case-01-symmetric.png",
-      "format": "PNG",
-      "height": 320,
-      "id": "case-01-symmetric",
-      "notes": "Self-authored geometric fixture; no external asset.",
-      "primary_subject": "symmetric ceremonial orb",
-      "reference_role": "content_reference",
-      "rights_status": "self_authored_cc0_like_project_fixture",
-      "sha256": "8e8183224ef1579f94cd764329872c433f07c79cd737f4b15d09417a4becc175",
-      "source_type": "programmatic_reference_fixture",
-      "width": 320
-    },
-    {
-      "coverage_class": "asymmetric_object",
-      "file": "evals/fixtures/references/case-02-asymmetric.png",
-      "format": "PNG",
-      "height": 320,
-      "id": "case-02-asymmetric",
-      "notes": "Self-authored geometric fixture; no external asset.",
-      "primary_subject": "asymmetric folded wing",
-      "reference_role": "content_reference",
-      "rights_status": "self_authored_cc0_like_project_fixture",
-      "sha256": "58ebb8268c754b934fb443da3bc4933f2e86d6472c31204ea04b95a00801e4ac",
-      "source_type": "programmatic_reference_fixture",
-      "width": 320
-    },
-    {
-      "coverage_class": "hollow_object",
-      "file": "evals/fixtures/references/case-03-hollow.png",
-      "format": "PNG",
-      "height": 320,
-      "id": "case-03-hollow",
-      "notes": "Self-authored geometric fixture; no external asset.",
-      "primary_subject": "hollow ring portal",
-      "reference_role": "content_reference",
-      "rights_status": "self_authored_cc0_like_project_fixture",
-      "sha256": "1dfce34d049ba9a34d1c2fe1b7e8eca2be193cb7945b8159c1375c05089edfb3",
-      "source_type": "programmatic_reference_fixture",
-      "width": 320
-    },
-    {
-      "coverage_class": "thin_elements",
-      "file": "evals/fixtures/references/case-04-thin.png",
-      "format": "PNG",
-      "height": 320,
-      "id": "case-04-thin",
-      "notes": "Self-authored geometric fixture; no external asset.",
-      "primary_subject": "antenna lattice",
-      "reference_role": "content_reference",
-      "rights_status": "self_authored_cc0_like_project_fixture",
-      "sha256": "dea794687e59100871f08c50b2e47616af49f24c038246e330be5de52d4af55f",
-      "source_type": "programmatic_reference_fixture",
-      "width": 320
-    },
-    {
-      "coverage_class": "transport_machinery",
-      "file": "evals/fixtures/references/case-05-machinery.png",
-      "format": "PNG",
-      "height": 320,
-      "id": "case-05-machinery",
-      "notes": "Self-authored geometric fixture; no external asset.",
-      "primary_subject": "tracked engineering vehicle",
-      "reference_role": "content_reference",
-      "rights_status": "self_authored_cc0_like_project_fixture",
-      "sha256": "744af5b939f7b64e13851f37ebc3428e68503e07558bca5874a39e8db01d742f",
-      "source_type": "programmatic_reference_fixture",
-      "width": 320
-    },
-    {
-      "coverage_class": "animal_sculpture",
-      "file": "evals/fixtures/references/case-06-animal.png",
-      "format": "PNG",
-      "height": 320,
-      "id": "case-06-animal",
-      "notes": "Self-authored geometric fixture; no external asset.",
-      "primary_subject": "stylized falcon",
-      "reference_role": "content_reference",
-      "rights_status": "self_authored_cc0_like_project_fixture",
-      "sha256": "e76f0dffcd36f338e7573ec837f85044c6b2635e6e85c1659dbfc5aba7b10d11",
-      "source_type": "programmatic_reference_fixture",
-      "width": 320
-    },
-    {
-      "coverage_class": "architectural_symbol",
-      "file": "evals/fixtures/references/case-07-architecture.png",
-      "format": "PNG",
-      "height": 320,
-      "id": "case-07-architecture",
-      "notes": "Self-authored geometric fixture; no external asset.",
-      "primary_subject": "monolithic arch tower",
-      "reference_role": "content_reference",
-      "rights_status": "self_authored_cc0_like_project_fixture",
-      "sha256": "2e957f4556f3130ea5b58446d319677ceb73c5cfb6b48fac4ab3f7855ee52f5d",
-      "source_type": "programmatic_reference_fixture",
-      "width": 320
-    },
-    {
-      "coverage_class": "financial_metaphor",
-      "file": "evals/fixtures/references/case-08-finance.png",
-      "format": "PNG",
-      "height": 320,
-      "id": "case-08-finance",
-      "notes": "Self-authored geometric fixture; no external asset.",
-      "primary_subject": "rising arrow vault",
-      "reference_role": "content_reference",
-      "rights_status": "self_authored_cc0_like_project_fixture",
-      "sha256": "2e613b2a342c884aea7e2ac1a524bfdf97f4f2e796d84876668baad43ad696b7",
-      "source_type": "programmatic_reference_fixture",
-      "width": 320
-    },
-    {
-      "coverage_class": "technology_symbol",
-      "file": "evals/fixtures/references/case-09-technology.png",
-      "format": "PNG",
-      "height": 320,
-      "id": "case-09-technology",
-      "notes": "Self-authored geometric fixture; no external asset.",
-      "primary_subject": "neural core chip",
-      "reference_role": "content_reference",
-      "rights_status": "self_authored_cc0_like_project_fixture",
-      "sha256": "eefa4a1dc42b86394806ef01c9c238462248439c15108bb84726ad9331f907fa",
-      "source_type": "programmatic_reference_fixture",
-      "width": 320
-    },
-    {
-      "coverage_class": "complex_to_single_object",
-      "file": "evals/fixtures/references/case-10-complex.png",
-      "format": "PNG",
-      "height": 320,
-      "id": "case-10-complex",
-      "notes": "Self-authored geometric fixture; no external asset.",
-      "primary_subject": "network city monolith",
-      "reference_role": "content_reference",
-      "rights_status": "self_authored_cc0_like_project_fixture",
-      "sha256": "6af356189551950ef650d733d0caf4b7b85c040e18a71e3ff4d93681280831b6",
-      "source_type": "programmatic_reference_fixture",
-      "width": 320
-    }
+    {"coverage_class":"simple_symmetric_object","file":"evals/fixtures/references/case-01-symmetric.png","format":"PNG","height":320,"id":"case-01-symmetric","notes":"Self-authored geometric fixture; no external asset.","primary_subject":"symmetric ceremonial orb","reference_role":"content_reference","rights_status":"self_authored_cc0_like_project_fixture","sha256":"8e8183224ef1579f94cd764329872c433f07c79cd737f4b15d09417a4becc175","source_type":"programmatic_reference_fixture","width":320},
+    {"coverage_class":"asymmetric_object","file":"evals/fixtures/references/case-02-asymmetric.png","format":"PNG","height":320,"id":"case-02-asymmetric","notes":"Self-authored geometric fixture; no external asset.","primary_subject":"asymmetric folded wing","reference_role":"content_reference","rights_status":"self_authored_cc0_like_project_fixture","sha256":"58ebb8268c754b934fb443da3bc4933f2e86d6472c31204ea04b95a00801e4ac","source_type":"programmatic_reference_fixture","width":320},
+    {"coverage_class":"hollow_object","file":"evals/fixtures/references/case-03-hollow.png","format":"PNG","height":320,"id":"case-03-hollow","notes":"Self-authored geometric fixture; no external asset.","primary_subject":"hollow ring portal","reference_role":"content_reference","rights_status":"self_authored_cc0_like_project_fixture","sha256":"1dfce34d049ba9a34d1c2fe1b7e8eca2be193cb7945b8159c1375c05089edfb3","source_type":"programmatic_reference_fixture","width":320},
+    {"coverage_class":"thin_elements","file":"evals/fixtures/references/case-04-thin.png","format":"PNG","height":320,"id":"case-04-thin","notes":"Self-authored geometric fixture; no external asset.","primary_subject":"antenna lattice","reference_role":"content_reference","rights_status":"self_authored_cc0_like_project_fixture","sha256":"dea794687e59100871f08c50b2e47616af49f24c038246e330be5de52d4af55f","source_type":"programmatic_reference_fixture","width":320},
+    {"coverage_class":"transport_machinery","file":"evals/fixtures/references/case-05-machinery.png","format":"PNG","height":320,"id":"case-05-machinery","notes":"Self-authored geometric fixture; no external asset.","primary_subject":"tracked engineering vehicle","reference_role":"content_reference","rights_status":"self_authored_cc0_like_project_fixture","sha256":"744af5b939f7b64e13851f37ebc3428e68503e07558bca5874a39e8db01d742f","source_type":"programmatic_reference_fixture","width":320},
+    {"coverage_class":"animal_sculpture","file":"evals/fixtures/references/case-06-animal.png","format":"PNG","height":320,"id":"case-06-animal","notes":"Self-authored geometric fixture; no external asset.","primary_subject":"stylized falcon","reference_role":"content_reference","rights_status":"self_authored_cc0_like_project_fixture","sha256":"e76f0dffcd36f338e7573ec837f85044c6b2635e6e85c1659dbfc5aba7b10d11","source_type":"programmatic_reference_fixture","width":320},
+    {"coverage_class":"architectural_symbol","file":"evals/fixtures/references/case-07-architecture.png","format":"PNG","height":320,"id":"case-07-architecture","notes":"Self-authored geometric fixture; no external asset.","primary_subject":"monolithic arch tower","reference_role":"content_reference","rights_status":"self_authored_cc0_like_project_fixture","sha256":"2e957f4556f3130ea5b58446d319677ceb73c5cfb6b48fac4ab3f7855ee52f5d","source_type":"programmatic_reference_fixture","width":320},
+    {"coverage_class":"financial_metaphor","file":"evals/fixtures/references/case-08-finance.png","format":"PNG","height":320,"id":"case-08-finance","notes":"Self-authored geometric fixture; no external asset.","primary_subject":"rising arrow vault","reference_role":"content_reference","rights_status":"self_authored_cc0_like_project_fixture","sha256":"2e613b2a342c884aea7e2ac1a524bfdf97f4f2e796d84876668baad43ad696b7","source_type":"programmatic_reference_fixture","width":320},
+    {"coverage_class":"technology_symbol","file":"evals/fixtures/references/case-09-technology.png","format":"PNG","height":320,"id":"case-09-technology","notes":"Self-authored geometric fixture; no external asset.","primary_subject":"neural core chip","reference_role":"content_reference","rights_status":"self_authored_cc0_like_project_fixture","sha256":"eefa4a1dc42b86394806ef01c9c238462248439c15108bb84726ad9331f907fa","source_type":"programmatic_reference_fixture","width":320},
+    {"coverage_class":"complex_to_single_object","file":"evals/fixtures/references/case-10-complex.png","format":"PNG","height":320,"id":"case-10-complex","notes":"Self-authored geometric fixture; no external asset.","primary_subject":"network city monolith","reference_role":"content_reference","rights_status":"self_authored_cc0_like_project_fixture","sha256":"6af356189551950ef650d733d0caf4b7b85c040e18a71e3ff4d93681280831b6","source_type":"programmatic_reference_fixture","width":320}
+  ],
+  "documentation_assets": [
+    {"format":"SVG","path":"docs/evidence/ogp8-overview.svg","rights_status":"self_authored_cc0_like_project_fixture","sha256":"baea822d5cb8f64370857bf62fe6ee302fe8b755ae90e8d41ceb614b0399da7c","source_type":"programmatic_documentation_overview"}
   ],
   "generated_at": "2026-07-15T00:00:00Z",
   "generator": "scripts/generate_evidence_corpus.py",
   "generator_type": "deterministic_programmatic_fixture_generator",
   "image_generator_output": false,
   "inspection_report": "reports/ogp8-inspection.json",
-  "limitations": [
-    "Structural QA fixtures, not image-generator performance evidence.",
-    "Visual verdicts require the committed manual rubric."
-  ],
+  "limitations": ["Structural QA fixtures, not image-generator performance evidence.", "Visual verdicts require the committed manual rubric."],
   "manual_review": "reports/ogp8-manual-review.json",
   "manual_rubric": "docs/evidence/ogp8-manual-rubric.md",
   "materialized_checksums": "docs/evidence/ogp8-materialized-checksums.txt",
   "project": "obsidian-gold-image-pipeline",
   "rights_policy": "All assets are self-authored geometric fixtures; no external, user, brand, logo, personal, or private-source image is included.",
   "runtime_anchors": [
-    {
-      "format": "SVG",
-      "height": 64,
-      "path": "skill/obsidian-gold-image-pipeline/assets/anchors/anchor-complex-object.svg",
-      "sha256": "e0865172822e3dc0526d89390f0b4d61201e4b75e7c4b164c30d7f1ebbf7a968",
-      "width": 64
-    },
-    {
-      "format": "SVG",
-      "height": 64,
-      "path": "skill/obsidian-gold-image-pipeline/assets/anchors/anchor-hollow-silhouette.svg",
-      "sha256": "9432fb8e8ab8d91c96995c0122df0e9760ce14fdcb234e4d0050650b52999a59",
-      "width": 64
-    },
-    {
-      "format": "SVG",
-      "height": 64,
-      "path": "skill/obsidian-gold-image-pipeline/assets/anchors/anchor-material.svg",
-      "sha256": "8ba650ea476fee8846a42f65774487943c1b6069be5c87dd645c96524a6afb7b",
-      "width": 64
-    }
+    {"format":"SVG","height":64,"path":"skill/obsidian-gold-image-pipeline/assets/anchors/anchor-complex-object.svg","rights_status":"self_authored_cc0_like_project_fixture","sha256":"e0865172822e3dc0526d89390f0b4d61201e4b75e7c4b164c30d7f1ebbf7a968","source_type":"programmatic_runtime_anchor","width":64},
+    {"format":"SVG","height":64,"path":"skill/obsidian-gold-image-pipeline/assets/anchors/anchor-hollow-silhouette.svg","rights_status":"self_authored_cc0_like_project_fixture","sha256":"9432fb8e8ab8d91c96995c0122df0e9760ce14fdcb234e4d0050650b52999a59","source_type":"programmatic_runtime_anchor","width":64},
+    {"format":"SVG","height":64,"path":"skill/obsidian-gold-image-pipeline/assets/anchors/anchor-material.svg","rights_status":"self_authored_cc0_like_project_fixture","sha256":"8ba650ea476fee8846a42f65774487943c1b6069be5c87dd645c96524a6afb7b","source_type":"programmatic_runtime_anchor","width":64}
   ],
   "schema_version": "1.0.0",
   "task": "OGP#8",
   "verdict_indexes": [
-    {
-      "cases": 5,
-      "path": "examples/accepted/index.json",
-      "sha256": "7ab881cd9d24ee8ebf66228969f32329754d60513cbc068548ac51a0e47809cd",
-      "verdict": "accepted"
-    },
-    {
-      "cases": 5,
-      "path": "examples/repairable/index.json",
-      "sha256": "a4287d5ce266ce1d33af6f1c004ee1b28a6c6bcbd67a13931b7c72d8c2e18572",
-      "verdict": "repairable"
-    },
-    {
-      "cases": 5,
-      "path": "examples/rejected/index.json",
-      "sha256": "5ad0843ca93ebc01e5910d8966654e64be04ad30a49715ba529ee50873d74ad3",
-      "verdict": "rejected"
-    }
+    {"cases":5,"path":"examples/accepted/index.json","sha256":"7ab881cd9d24ee8ebf66228969f32329754d60513cbc068548ac51a0e47809cd","verdict":"accepted"},
+    {"cases":5,"path":"examples/repairable/index.json","sha256":"a4287d5ce266ce1d33af6f1c004ee1b28a6c6bcbd67a13931b7c72d8c2e18572","verdict":"repairable"},
+    {"cases":5,"path":"examples/rejected/index.json","sha256":"5ad0843ca93ebc01e5910d8966654e64be04ad30a49715ba529ee50873d74ad3","verdict":"rejected"}
   ]
 }
