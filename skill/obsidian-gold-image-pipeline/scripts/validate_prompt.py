@@ -14,6 +14,7 @@ try:
         EXIT_OPERATIONAL,
         EXIT_OK,
         TOOL_VERSION,
+        ToolArgumentParser,
         ToolError,
         atomic_write_json,
         diagnostic,
@@ -29,6 +30,7 @@ except ImportError:
         EXIT_OPERATIONAL,
         EXIT_OK,
         TOOL_VERSION,
+        ToolArgumentParser,
         ToolError,
         atomic_write_json,
         diagnostic,
@@ -191,7 +193,7 @@ def _sequence_positions(tokens: list[str], phrase: str) -> list[tuple[int, int]]
 
 
 def build_parser() -> argparse.ArgumentParser:
-    parser = argparse.ArgumentParser(
+    parser = ToolArgumentParser(
         description=(
             "Validate required Obsidian Gold prompt blocks and contextual conflicts. "
             "Exit 0 means valid; exit 2 means deterministic validation failure; "
@@ -361,9 +363,7 @@ def validate(
     diagnostics: list[dict[str, Any]] = []
 
     if not normalized:
-        diagnostics.append(
-            diagnostic("PROMPT_EMPTY", "error", "Prompt is empty.")
-        )
+        diagnostics.append(diagnostic("PROMPT_EMPTY", "error", "Prompt is empty."))
 
     for block, present in presence.items():
         if not present:
