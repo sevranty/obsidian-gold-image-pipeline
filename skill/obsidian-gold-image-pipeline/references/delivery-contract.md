@@ -75,3 +75,4 @@ The workflow ends successfully only with:
 delivery_state: DELIVERY_READY
 visibility_confirmed: true
 ```
+
