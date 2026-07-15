@@ -1,6 +1,6 @@
 # Foundation Owner Review and Manual Validation
 
-Status: Owner review corrections validated; PR remains Draft
+Status: Owner review corrections validated
 
 Validation date: 2026-07-15
 
@@ -10,7 +10,7 @@ Validated content HEAD: `1e10019a4ddb28e9788f00a1756b824b63c1518c`
 
 ## Evidence model
 
-The validated content HEAD is the repository state after all functional review fixes and before this evidence file is updated. The evidence update necessarily creates a later envelope commit, so the final PR HEAD is recorded in the PR conversation and PR body after this file is committed. This avoids claiming that a commit contains its own SHA.
+The validated content HEAD is the repository state after all functional review fixes and before this evidence file is updated. The evidence update necessarily creates a later envelope commit, so the final PR HEAD and lifecycle state are recorded in GitHub PR metadata and the PR conversation. This avoids claiming that a commit contains its own SHA.
 
 ## Owner-review findings and dispositions
 
