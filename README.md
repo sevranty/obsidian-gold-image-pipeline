@@ -1,0 +1,1 @@
+# obsidian-gold-image-pipeline
