@@ -39,6 +39,17 @@ def valid_spec() -> dict[str, object]:
 
 
 class ReviewRegressionTests(unittest.TestCase):
+    def test_all_cli_parse_errors_use_json_stderr_and_exit_three(self) -> None:
+        for module in (validate_prompt, inspect_image, build_manifest, package_asset):
+            stderr = io.StringIO()
+            with contextlib.redirect_stderr(stderr):
+                with self.assertRaises(SystemExit) as raised:
+                    module.build_parser().parse_args([])
+            self.assertEqual(raised.exception.code, 3)
+            self.assertEqual(
+                json.loads(stderr.getvalue())["status"], "operational_error"
+            )
+
     def test_invalid_custom_regex_returns_operational_exit_three(self) -> None:
         with tempfile.TemporaryDirectory() as temporary:
             rules = Path(temporary) / "rules.json"
