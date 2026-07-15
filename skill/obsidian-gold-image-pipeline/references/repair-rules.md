@@ -19,13 +19,13 @@ After the repair, repeat the full critical defect gate and scorecard. Do not ass
 
 ### `semantic_error`
 
-Action: full regeneration from the Transformation Contract. Do not attempt local edit when the semantic subject is wrong.
+Action: first reconcile the intended meaning against the Reference Analysis Card and Transformation Contract. Revise the contract when it encodes the wrong relationship or metaphor, then perform full regeneration. Do not attempt local edit for a global semantic error.
 
-Success signal: intended meaning and primary subject are immediately recognizable.
+Success signal: intended meaning is immediately legible and the selected subject or fused metaphor matches the corrected contract.
 
 ### `subject_error`
 
-Action: regenerate when the subject category is wrong; edit only when one recognition feature is missing.
+Action: regenerate when the subject category is wrong; edit only when one declared recognition feature is missing and the rest of the subject is stable.
 
 Success signal: subject identity matches declared recognition features.
 
@@ -33,11 +33,11 @@ Success signal: subject identity matches declared recognition features.
 
 Action: simplify or restore the outer contour while preserving camera, material system, and background.
 
-Success signal: silhouette is recognizable at 64 px.
+Success signal: silhouette is recognizable when fitted inside 64x64 px.
 
 ### `composition_error`
 
-Action: remove secondary objects, environment, floor, or crop; recenter or scale the single object.
+Action: remove secondary objects, environment, floor, or invalid crop; recenter or scale the single object. Use full regeneration when several global composition defects coexist.
 
 Success signal: one full isolated object with generous negative space.
 
@@ -55,9 +55,9 @@ Success signal: obsidian is matte and non-mineral; gold is metallic but not mirr
 
 ### `gold_ratio_error`
 
-Action: reduce or increase gold only through purposeful rims, trims, insets, seams, tips, or internal core elements.
+Action: reduce or increase gold only through purposeful rims, trims, insets, seams, tips, or internal core elements. Do not increase a below-target accent when the Transformation Contract documents a valid semantic reason for restraint.
 
-Success signal: gold visually occupies 15-25% and remains subordinate to obsidian.
+Success signal: gold remains subordinate to obsidian, stays at or below 25%, and either reaches the provisional 15-25% target or has a documented below-target justification.
 
 ### `lighting_error`
 
