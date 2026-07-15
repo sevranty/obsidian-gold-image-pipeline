@@ -1,0 +1,12 @@
+Generate a new raster digital sculpture from the declared content reference.
+Primary subject: a recognizable tracked vehicle with preserved recognition features.
+Silhouette: preserve the outer contour, orientation, and key proportions.
+Geometry: deliberate faceted planar geometry with structural simplification.
+Materials: matte manufactured obsidian-black body with satin gold accents covering 15-25%.
+Lighting: one broad soft key light with minimal controlled reflections on gold accents.
+Composition: one isolated full object with generous negative space.
+Background: uniform pure black background.
+Fidelity: preserve subject recognition and silhouette fidelity.
+Input role: content reference.
+Remove and forbid: no environment or floor, no stone texture, no additional colors, no text, logo, or watermark.
+Output: square 1:1 PNG raster.
