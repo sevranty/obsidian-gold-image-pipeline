@@ -19,6 +19,7 @@ remove
 must_not_add
 subject_fidelity
 silhouette_fidelity
+composition_fidelity
 composition_guidance
 preferred_orientation
 confidence
@@ -86,6 +87,16 @@ Include style-specific risks relevant to the subject, such as:
 - additional colors;
 - text.
 
+### Fidelity fields
+
+Use the 0-4 scale from `reference-analysis.md` separately:
+
+- `subject_fidelity`: semantic identity and recognition features;
+- `silhouette_fidelity`: outer contour, proportions, and pose;
+- `composition_fidelity`: source framing and spatial arrangement.
+
+For the canonical single-object conversion, composition fidelity is usually `0` or `1`. It must not preserve an environment or multi-object layout.
+
 ## 4. Complex scene reduction
 
 A complex scene is valid only when the contract resolves it to:
@@ -105,6 +116,7 @@ In `generate` mode:
 - the reference is evidence, not an edit target;
 - source pixels, background, lighting, and material are not preserved;
 - recognition features and silhouette guidance define fidelity;
+- source composition is weak guidance and cannot override the single-object style contract;
 - the output may vary in details while remaining semantically recognizable.
 
 ## 6. Edit mode
@@ -119,7 +131,7 @@ remove
 must_not_appear
 ```
 
-The edit target is the source of truth for all `keep_unchanged` fields. Re-state these invariants in every repair instruction.
+The edit target is the source of truth for all `keep_unchanged` fields. Re-state these invariants in every repair instruction. Supplemental references apply only to the declared changed region or property.
 
 ## 7. Stop conditions
 
