@@ -35,8 +35,16 @@ def validate(root: Path) -> dict[str, Any]:
     if not inventory_path.exists():
         return {'status':'fail','errors':['inventory missing'],'warnings':[]}
     inventory = json.loads(inventory_path.read_text(encoding='utf-8'))
-    refs = inventory.get('references', [])
+    refs = inventory.get('references', inventory.get('coverage_cases', []))
     outputs = inventory.get('outputs', [])
+    if not outputs:
+        for entry in inventory.get('verdict_indexes', []):
+            index_path = root / entry.get('path', '')
+            if not index_path.exists():
+                fail(errors, f"verdict index missing: {entry.get('path')}")
+                continue
+            payload = json.loads(index_path.read_text(encoding='utf-8'))
+            outputs.extend(payload.get('cases', []))
     counts = inventory.get('counts', {})
 
     expected_counts = {'coverage_cases':10,'accepted':5,'repairable':5,'rejected':5,'runtime_anchors':3}
