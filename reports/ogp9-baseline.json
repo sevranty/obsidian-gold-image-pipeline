@@ -1,0 +1,42 @@
+{
+  "errors": [],
+  "generated_at": "2026-07-15T00:00:00Z",
+  "limitations": [
+    "Static routing fixtures are not live platform telemetry.",
+    "Workflow cases validate observable contract records, not hidden reasoning.",
+    "Visual verdicts use a manual rubric; no automatic aesthetic score is claimed.",
+    "Actual generation, repair success, and user-visible delivery are exercised in OGP#13."
+  ],
+  "metrics": {
+    "critical_defect_rate_golden_set": 0.3333333333333333,
+    "delivery_success_rate_workflow_contract": 1.0,
+    "failure_path_compliance": 1.0,
+    "repairable_rate_golden_set": 0.3333333333333333,
+    "style_regression_contract_pass_rate": 1.0,
+    "trigger_contract_accuracy": 1.0,
+    "trigger_precision_static": 1.0,
+    "trigger_recall_static": 1.0,
+    "workflow_compliance": 1.0
+  },
+  "schema_version": "1.0.0",
+  "status": "pass",
+  "suite_counts": {
+    "failure": 6,
+    "trigger": 28,
+    "visual": 15,
+    "workflow": 10
+  },
+  "task": "OGP#9",
+  "trigger_kind_counts": {
+    "boundary": 6,
+    "negative": 10,
+    "positive": 12
+  },
+  "versions": {
+    "manifest_schema": "1.0.0",
+    "prompt_schema": "1.0.0",
+    "qa_schema": "1.0.0",
+    "skill": "0.1.0",
+    "style_core": "1.0.0"
+  }
+}
