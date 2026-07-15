@@ -278,6 +278,15 @@ def _load_rules(path: Path | None) -> tuple[
     ):
         raise ToolError("rules.allow_patterns must be a string list.")
     allowed.extend(normalize_text(item) for item in allow_additions)
+
+    for block, patterns in required.items():
+        for pattern in patterns:
+            try:
+                re.compile(pattern, flags=re.IGNORECASE)
+            except re.error as exc:
+                raise ToolError(
+                    f"Invalid required-block regex for {block}: {pattern!r}: {exc}"
+                ) from exc
     return required, denied, tuple(allowed)
 
 
