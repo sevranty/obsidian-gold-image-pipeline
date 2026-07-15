@@ -2,8 +2,13 @@
 
 ```yaml
 mode: generate
-input_images: []
-reference_roles: []
+input_images:
+  - image_id: ""
+    roles: []
+    priority: 0
+    intended_use: ""
+    must_not_override: []
+    notes: ""
 observed_subjects: []
 primary_subject_candidates: []
 selected_primary_subject: ""
