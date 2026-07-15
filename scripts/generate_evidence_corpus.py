@@ -178,7 +178,7 @@ def main() -> None:
     checksum_path.write_text("".join(f"{sha(path)}  {path.relative_to(ROOT).as_posix()}\n" for path in checks), encoding="utf-8")
     anchors = []
     for path in sorted((ROOT / "skill/obsidian-gold-image-pipeline/assets/anchors").glob("*.svg")):
-        anchors.append({"path": path.relative_to(ROOT).as_posix(), "sha256": sha(path), "width": 64, "height": 64, "format": "SVG"})
+        anchors.append({"path": path.relative_to(ROOT).as_posix(), "sha256": sha(path), "width": 64, "height": 64, "format": "SVG", "source_type": "programmatic_runtime_anchor", "rights_status": RIGHTS})
     inventory = {
         "schema_version": "1.0.0",
         "project": "obsidian-gold-image-pipeline",
@@ -192,6 +192,7 @@ def main() -> None:
         "coverage_cases": references,
         "verdict_indexes": [{"verdict": verdict, "path": f"examples/{verdict}/index.json", "sha256": sha(ROOT / f"examples/{verdict}/index.json"), "cases": 5} for verdict in ("accepted", "repairable", "rejected")],
         "runtime_anchors": anchors,
+        "documentation_assets": [{"path": "docs/evidence/ogp8-overview.svg", "sha256": sha(ROOT / "docs/evidence/ogp8-overview.svg"), "format": "SVG", "source_type": "programmatic_documentation_overview", "rights_status": RIGHTS}],
         "materialized_checksums": checksum_path.relative_to(ROOT).as_posix(),
         "manual_rubric": "docs/evidence/ogp8-manual-rubric.md",
         "inspection_report": "reports/ogp8-inspection.json",
