@@ -172,7 +172,7 @@ def main() -> None:
     for verdict in ("accepted", "repairable", "rejected"):
         path = ROOT / f"examples/{verdict}/index.json"
         path.write_text(json.dumps({"schema_version": "1.0.0", "verdict": verdict, "cases": [item for item in outputs if item["verdict"] == verdict]}, sort_keys=True, separators=(",", ":")) + "\n", encoding="utf-8")
-    checks = sorted(path for path in ROOT.rglob("*.png") if "reports/generated" not in path.as_posix())
+    checks = sorted({ROOT / item["file"] for item in references} | {ROOT / item[field] for item in outputs for field in ("image", "preview_64", "eval_output")})
     checksum_path = ROOT / "docs/evidence/ogp8-materialized-checksums.txt"
     checksum_path.parent.mkdir(parents=True, exist_ok=True)
     checksum_path.write_text("".join(f"{sha(path)}  {path.relative_to(ROOT).as_posix()}\n" for path in checks), encoding="utf-8")
