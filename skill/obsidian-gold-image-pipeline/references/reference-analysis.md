@@ -20,7 +20,7 @@ Stop when the target image is missing or unusable. Do not invent a reference.
 
 ## 3. Reference roles
 
-Assign one role to every input image:
+Assign one or more explicit roles to every input image:
 
 - `content_reference`: source of subject and semantic meaning;
 - `silhouette_reference`: source of outer shape or pose;
@@ -29,7 +29,18 @@ Assign one role to every input image:
 - `edit_target`: existing Obsidian Gold image to change;
 - `do_not_copy`: context that must not be reproduced literally.
 
-One image may have multiple roles only when each role is explicit.
+Record each assignment as a structured entry:
+
+```text
+image_id
+roles
+priority
+intended_use
+must_not_override
+notes
+```
+
+One image may have multiple roles only when each role is explicit. An edit target must always declare which properties are protected by `keep_unchanged`.
 
 ## 4. Primary subject selection
 
@@ -82,16 +93,30 @@ Do not promise exact face, hand, clothing, age, or likeness preservation.
 
 ## 8. Multiple references and precedence
 
-Default precedence:
+Precedence is mode-specific.
+
+### Generate mode
 
 ```text
 user-stated requirement
   > content reference
-  > edit target invariants
   > silhouette reference
   > declared detail reference
   > composition reference
 ```
+
+### Edit mode
+
+```text
+user-stated change
+  > edit target keep-unchanged invariants
+  > content reference for the changed region only
+  > silhouette reference for the changed region only
+  > declared detail reference
+  > composition reference
+```
+
+A supplemental reference must not override an edit-target invariant unless the user explicitly requests that invariant to change.
 
 When two references conflict at the same priority:
 
