@@ -16,6 +16,7 @@ try:
         EXIT_OPERATIONAL,
         EXIT_OK,
         TOOL_VERSION,
+        ToolArgumentParser,
         ToolError,
         atomic_write_bytes,
         canonical_json_bytes,
@@ -32,6 +33,7 @@ except ImportError:
         EXIT_OPERATIONAL,
         EXIT_OK,
         TOOL_VERSION,
+        ToolArgumentParser,
         ToolError,
         atomic_write_bytes,
         canonical_json_bytes,
@@ -122,7 +124,7 @@ QA_CATEGORY_LIMITS = {
 
 
 def build_parser() -> argparse.ArgumentParser:
-    parser = argparse.ArgumentParser(
+    parser = ToolArgumentParser(
         description=(
             "Validate and canonicalize an Obsidian Gold manifest specification. "
             "The input must supply created_at; the tool never inserts the current time. "
