@@ -1,6 +1,6 @@
 {
+  "accepted_technical_pass": 5,
   "ascii_paths": true,
-  "checked_binary_references_and_outputs": 55,
   "counts": {
     "accepted": 5,
     "coverage_cases": 10,
@@ -9,30 +9,24 @@
     "runtime_anchors": 3
   },
   "errors": [],
-  "forbidden_tokens_absent": true,
+  "forbidden_private_tokens_absent": true,
   "inspection_reports": 15,
+  "inspection_sha_bound": true,
   "limitations": [
     "OGP#7 deterministic inspection does not judge aesthetics, material realism, semantic recognition, or gold coverage.",
     "All visual verdicts are structural manual-rubric fixtures, not image-generator performance claims."
   ],
-  "runtime_anchors": 3,
+  "materialized_assets": 55,
+  "materialized_checksum_entries": 55,
+  "py_compile": "pass",
+  "rights_approved": true,
+  "runtime_anchor_checksums": true,
   "schema_version": "1.0.0",
   "status": "pass",
   "task": "OGP#8",
-  "text_files_checked": 24,
-  "verdict_counts": {
-    "accepted": 5,
-    "rejected": 5,
-    "repairable": 5
-  },
+  "validation_scope": "OGP#8 generated corpus, committed indexes, manifests, reports, anchors, paths, and provenance",
+  "verdict_index_checksums": true,
   "warnings": [
-    "repairable-01-edge-crop: deterministic inspection passes; rejection/repair remains a manual visual verdict",
-    "repairable-02-weak-light: deterministic inspection passes; rejection/repair remains a manual visual verdict",
-    "repairable-03-gold-dominance: deterministic inspection passes; rejection/repair remains a manual visual verdict",
-    "repairable-04-stray-artifact: deterministic inspection passes; rejection/repair remains a manual visual verdict",
-    "repairable-05-weak-silhouette: deterministic inspection passes; rejection/repair remains a manual visual verdict",
-    "rejected-02-stone-texture: deterministic inspection passes; rejection/repair remains a manual visual verdict",
-    "rejected-03-chrome: deterministic inspection passes; rejection/repair remains a manual visual verdict",
-    "rejected-05-crop-pseudotext: deterministic inspection passes; rejection/repair remains a manual visual verdict"
+    "Eight non-accepted fixtures pass deterministic raster checks; their verdicts remain manual visual-rubric decisions."
   ]
 }
