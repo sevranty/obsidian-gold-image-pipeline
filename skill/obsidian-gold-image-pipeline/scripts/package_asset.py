@@ -17,6 +17,7 @@ try:
         EXIT_OPERATIONAL,
         EXIT_OK,
         TOOL_VERSION,
+        ToolArgumentParser,
         ToolError,
         atomic_write_bytes,
         canonical_json_bytes,
@@ -30,6 +31,7 @@ except ImportError:
         EXIT_OPERATIONAL,
         EXIT_OK,
         TOOL_VERSION,
+        ToolArgumentParser,
         ToolError,
         atomic_write_bytes,
         canonical_json_bytes,
@@ -43,7 +45,7 @@ TOOL_NAME = "package_asset"
 
 
 def build_parser() -> argparse.ArgumentParser:
-    parser = argparse.ArgumentParser(
+    parser = ToolArgumentParser(
         description=(
             "Copy an accepted image, 64x64 preview, and manifest into a new production "
             "directory. Optionally export WebP. Existing source files are never modified "
