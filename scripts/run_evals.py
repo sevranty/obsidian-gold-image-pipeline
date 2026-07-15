@@ -27,6 +27,13 @@ def main(argv: list[str] | None=None) -> int:
     except RuntimeError as exc:
         sys.stderr.write(json.dumps({"status":"operational_error","error":str(exc)},sort_keys=True)+"\n"); return 3
     errors=[]; raw={"schema_version":"1.0.0","task":"OGP#9","suites":{}}; ids=set()
+    ogp8={}
+    for verdict in ("accepted","repairable","rejected"):
+        path=args.root/f"examples/{verdict}/index.json"
+        try: payload=load(path)
+        except RuntimeError as exc:
+            sys.stderr.write(json.dumps({"status":"operational_error","error":str(exc)},sort_keys=True)+"\n"); return 3
+        for item in payload["cases"]: ogp8[item.get("id")]=item
     for name,payload in suites.items():
         cases=payload["cases"]
         if len(cases)!=EXPECTED_COUNTS[name]: errors.append(f"{name}: expected {EXPECTED_COUNTS[name]}, got {len(cases)}")
@@ -36,6 +43,7 @@ def main(argv: list[str] | None=None) -> int:
             elif cid in ids: errors.append(f"duplicate id: {cid}")
             else: ids.add(cid)
             if not case.get("observable_signal"): errors.append(f"{name}/{cid}: observable signal missing")
+            if name=="trigger" and case.get("kind")=="boundary" and not case.get("resolution_rule"): errors.append(f"trigger/{cid}: boundary resolution rule missing")
         if name == "trigger": compact=[{"id":c.get("id"),"expected":c.get("expected"),"observed":c.get("predicted"),"pass":c.get("expected")==c.get("predicted")} for c in cases]
         elif name == "workflow": compact=[{"id":c.get("id"),"expected_stage_count":len(c.get("expected_stages",[])),"observed_stage_count":len(c.get("observed_stages",[])),"delivery_state":c.get("delivery_state"),"pass":c.get("expected_stages")==c.get("observed_stages") and c.get("delivery_state")=="DELIVERED"} for c in cases]
         elif name == "visual": compact=[{"id":c.get("id"),"expected":c.get("expected_verdict"),"observed":c.get("observed_verdict"),"diagnostic_codes":c.get("diagnostic_codes"),"pass":c.get("expected_verdict")==c.get("observed_verdict") and c.get("automated_aesthetic_claim") is False} for c in cases]
@@ -59,10 +67,15 @@ def main(argv: list[str] | None=None) -> int:
         if not ok: errors.append(f"workflow/{c.get('id')}: stage or delivery mismatch")
     visual_pass=0; critical=0; repairable=0
     for c in suites["visual"]["cases"]:
-        ok=c.get("expected_verdict")==c.get("observed_verdict") and c.get("automated_aesthetic_claim") is False
+        indexed=ogp8.get(c.get("id"),{})
+        ok=c.get("expected_verdict")==c.get("observed_verdict") and c.get("automated_aesthetic_claim") is False and indexed.get("verdict")==c.get("expected_verdict") and indexed.get("failure_codes")==c.get("diagnostic_codes")
         visual_pass+=ok; critical+=c.get("observed_verdict")=="rejected"; repairable+=c.get("observed_verdict")=="repairable"
-        if not ok: errors.append(f"visual/{c.get('id')}: verdict or boundary mismatch")
-    failure_pass=sum(c.get("expected_action")==c.get("observed_action") and c.get("expected_code")==c.get("observed_code") for c in suites["failure"]["cases"])
+        if not ok: errors.append(f"visual/{c.get('id')}: verdict, diagnostics, OGP#8 index, or boundary mismatch")
+    failure_pass=0
+    for c in suites["failure"]["cases"]:
+        ok=c.get("expected_action")==c.get("observed_action") and c.get("expected_code")==c.get("observed_code")
+        failure_pass+=ok
+        if not ok: errors.append(f"failure/{c.get('id')}: action or code mismatch")
     metrics={
       "trigger_contract_accuracy":trigger_correct/len(suites["trigger"]["cases"]),
       "trigger_precision_static":precision,
@@ -74,7 +87,7 @@ def main(argv: list[str] | None=None) -> int:
       "failure_path_compliance":failure_pass/len(suites["failure"]["cases"]),
       "delivery_success_rate_workflow_contract":sum(c.get("delivery_state")=="DELIVERED" for c in suites["workflow"]["cases"])/len(suites["workflow"]["cases"])
     }
-    result={"schema_version":"1.0.0","task":"OGP#9","status":"pass" if not errors else "fail","suite_counts":{n:len(p["cases"]) for n,p in suites.items()},"trigger_kind_counts":kinds,"metrics":metrics,"errors":errors,"limitations":["Static routing fixtures are not live platform telemetry.","Workflow cases validate observable contract records, not hidden reasoning.","Visual verdicts use a manual rubric; no automatic aesthetic score is claimed.","Actual generation, repair success, and user-visible delivery are exercised in OGP#13."]}
+    result={"schema_version":"1.0.0","task":"OGP#9","generated_at":"2026-07-15T00:00:00Z","versions":{"skill":"0.1.0","style_core":"1.0.0","prompt_schema":"1.0.0","qa_schema":"1.0.0","manifest_schema":"1.0.0"},"status":"pass" if not errors else "fail","suite_counts":{n:len(p["cases"]) for n,p in suites.items()},"trigger_kind_counts":kinds,"metrics":metrics,"errors":errors,"limitations":["Static routing fixtures are not live platform telemetry.","Workflow cases validate observable contract records, not hidden reasoning.","Visual verdicts use a manual rubric; no automatic aesthetic score is claimed.","Actual generation, repair success, and user-visible delivery are exercised in OGP#13."]}
     for path,value in ((args.output,result),(args.raw_output,raw)):
         path.parent.mkdir(parents=True,exist_ok=True); path.write_text(json.dumps(value,indent=2,sort_keys=True)+"\n",encoding="utf-8")
     sys.stdout.write(json.dumps(result,indent=2,sort_keys=True)+"\n")
