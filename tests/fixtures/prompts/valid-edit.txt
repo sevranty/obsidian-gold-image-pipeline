@@ -1,0 +1,17 @@
+Edit the existing raster digital sculpture.
+Primary subject: the recognizable vehicle in the edit target.
+Silhouette: preserve the outer contour, pose, camera, crop, and key proportions.
+Geometry: preserve the existing faceted planar geometry.
+Materials: keep the matte obsidian body and satin gold accents.
+Lighting: preserve the broad soft key light and restrained gold highlights.
+Composition: keep one isolated full object and negative space.
+Background: keep the pure black background.
+Fidelity: preserve subject, silhouette, and composition fidelity.
+Input role: edit target.
+Output: square PNG raster with no text or watermark.
+
+Change: remove the visible floor shadow.
+Keep unchanged: subject identity, silhouette, camera, crop, geometry, gold placement, lighting, and background.
+May vary: only pixels required to remove the floor shadow.
+Remove: floor shadow.
+Must not appear: environment, pedestal, extra colors, stone texture, text, logo, or watermark.
