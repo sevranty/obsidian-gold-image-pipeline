@@ -3,6 +3,7 @@
 
 from __future__ import annotations
 
+import argparse
 import hashlib
 import json
 import os
@@ -21,6 +22,18 @@ TOOL_VERSION = "1.0.0"
 
 class ToolError(Exception):
     """Operational error that should produce a stable machine-readable failure."""
+
+
+class ToolArgumentParser(argparse.ArgumentParser):
+    """Argument parser that reports usage errors through the operational contract."""
+
+    def error(self, message: str) -> None:
+        tool = Path(self.prog).stem
+        emit_report(
+            operational_failure(tool, f"Argument error: {message}"),
+            stream=sys.stderr,
+        )
+        raise SystemExit(EXIT_OPERATIONAL)
 
 
 def normalize_text(value: str) -> str:
