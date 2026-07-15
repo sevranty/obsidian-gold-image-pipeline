@@ -16,6 +16,7 @@ try:
         EXIT_OPERATIONAL,
         EXIT_OK,
         TOOL_VERSION,
+        ToolArgumentParser,
         ToolError,
         atomic_write_json,
         diagnostic,
@@ -30,6 +31,7 @@ except ImportError:
         EXIT_OPERATIONAL,
         EXIT_OK,
         TOOL_VERSION,
+        ToolArgumentParser,
         ToolError,
         atomic_write_json,
         diagnostic,
@@ -45,7 +47,7 @@ ALLOWED_FORMATS = {"PNG", "JPEG", "WEBP"}
 
 
 def build_parser() -> argparse.ArgumentParser:
-    parser = argparse.ArgumentParser(
+    parser = ToolArgumentParser(
         description=(
             "Inspect raster dimensions, format, mode, alpha, file size, corner blackness, "
             "empty-image risk, and edge-touch risk. Optionally write a 64x64 preview. "
