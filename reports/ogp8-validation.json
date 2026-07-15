@@ -1,6 +1,8 @@
 {
   "accepted_technical_pass": 5,
   "ascii_paths": true,
+  "checksum_scope_isolated": true,
+  "clean_generator_inventory_stable": true,
   "counts": {
     "accepted": 5,
     "coverage_cases": 10,
@@ -16,6 +18,9 @@
     "OGP#7 deterministic inspection does not judge aesthetics, material realism, semantic recognition, or gold coverage.",
     "All visual verdicts are structural manual-rubric fixtures, not image-generator performance claims."
   ],
+  "manual_scorecard_cases": 15,
+  "manual_scorecard_categories": 6,
+  "manual_scorecard_total_reconciled": true,
   "materialized_assets": 55,
   "materialized_checksum_entries": 55,
   "py_compile": "pass",
@@ -24,7 +29,7 @@
   "schema_version": "1.0.0",
   "status": "pass",
   "task": "OGP#8",
-  "validation_scope": "OGP#8 generated corpus, committed indexes, manifests, reports, anchors, paths, and provenance",
+  "validation_scope": "OGP#8 generated corpus, committed indexes, manifests, reports, anchors, paths, provenance, and weighted scorecards",
   "verdict_index_checksums": true,
   "warnings": [
     "Eight non-accepted fixtures pass deterministic raster checks; their verdicts remain manual visual-rubric decisions."
