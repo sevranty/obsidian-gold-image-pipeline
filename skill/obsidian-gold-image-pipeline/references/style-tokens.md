@@ -9,13 +9,13 @@ These tokens are a human- and machine-readable contract. They do not imply imple
 | Token | Value | Rule |
 | --- | --- | --- |
 | `background.black` | `#000000` | Mandatory final background. |
-| `obsidian.base` | `#050505` to `#141414` | Object body may use tonal blacks for readable planes. |
-| `obsidian.highlight` | up to `#242424` | Broad low-intensity plane highlight only. |
-| `gold.primary` | `#D4AF37` reference | Main warm metallic gold reference. |
-| `gold.light` | `#FFD66B` reference | Small highlight or restrained inner glow. |
-| `gold.deep` | `#8A6718` reference | Shadowed gold plane. |
+| `obsidian.body.range` | `#050505` to `#1A1A1A` | Tonal black range for readable object planes. |
+| `obsidian.deep.reference` | `#1A1A1A` | Legacy canonical deep-obsidian reference; never a final background. |
+| `obsidian.highlight.limit` | up to `#242424` | Derived readability ceiling for broad low-intensity plane highlights. |
+| `gold.primary` | `#FFD700` | Legacy canonical primary gold reference. |
+| `gold.secondary` | `#C7A256` | Legacy canonical muted/satin gold reference. |
 
-Exact rendered pixels vary with lighting. The palette contract is categorical: black/tonal black plus warm gold only.
+Rendered highlights and shadows may vary because of lighting, but they must remain categorical warm-gold variations rather than new design colors.
 
 ## Material tokens
 
@@ -27,8 +27,10 @@ Exact rendered pixels vary with lighting. The palette contract is categorical: b
 | `material.gold.finish` | `satin default` |
 | `material.gold.reflectance` | `small controlled specular highlights; no environment reflection` |
 | `material.gold.coverage.target` | `15-25% of visible object area` |
-| `material.gold.coverage.warning_low` | `<10% unless semantically justified` |
+| `material.gold.coverage.below_target` | `<15% allowed only when semantically justified and still visibly intentional` |
 | `material.gold.coverage.reject_high` | `>25%` |
+
+The 15-25% range is a provisional Foundation target pending visual calibration in the evidence set. Values below the target are not automatically critical; values above 25% are critical.
 
 ## Geometry tokens
 
@@ -38,7 +40,7 @@ Exact rendered pixels vary with lighting. The palette contract is categorical: b
 | `geometry.edges` | `clean and deliberate` |
 | `geometry.folds` | `sharp, controlled` |
 | `geometry.detail` | `icon-grade; no micro-noise` |
-| `geometry.silhouette_test` | `recognizable at 64x64 px` |
+| `geometry.silhouette_test` | `recognizable when fitted inside 64x64 px` |
 
 ## Lighting tokens
 
