@@ -1,12 +1,24 @@
 # OGP#3 Structural and Manual Validation
 
-Status: PASS
+Status: Owner review corrections validated; PASS
 
 Validation date: 2026-07-15
 
 Base: `main@ecb8f77ed48762205c68e2cef7a20554327ad0f7`
 
-Validated content HEAD: `7bdf26340cbd082552aa71df8c63609ecc918c30`
+Initial review HEAD: `40022990545f03bc29bd469e0db508560131ebf8`
+
+Validated content HEAD: `4dd70a82a658c9fad99b24e435228672c7bf6ebc`
+
+## Evidence model
+
+The validated content HEAD contains all runtime files and owner-review corrections except this evidence update. Updating this document creates a later evidence-envelope commit, which is recorded in PR metadata.
+
+## Owner-review finding
+
+| ID | Severity | Finding | Disposition |
+| --- | --- | --- | --- |
+| OR-01 | P1 | All five changed Markdown files were written without a final newline while the initial evidence claimed final-newline compliance. | Added final newlines to every changed file, invalidated the initial HEAD, and repeated structural review on `4dd70a82a658c9fad99b24e435228672c7bf6ebc`. |
 
 ## Scope
 
@@ -99,10 +111,12 @@ visible_success_gate=True
 positive_cases=12
 negative_cases=10
 boundary_cases=6
+final_newlines=True
 ascii_only=True
 PASS
 ```
 
 ## Review conclusion
 
-OGP#3 is structurally complete and consistent with the merged Foundation. No blocking finding remains within the issue scope. Visual calibration and actual image evidence are intentionally deferred to OGP#8 and OGP#13 rather than being represented as completed here.
+OGP#3 is structurally complete and consistent with the merged Foundation. The owner-review finding is corrected and no blocking finding remains within issue scope. Visual calibration and actual image evidence are intentionally deferred to OGP#8 and OGP#13 rather than being represented as completed here.
+
