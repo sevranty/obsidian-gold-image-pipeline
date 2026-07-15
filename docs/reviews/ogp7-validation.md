@@ -1,16 +1,29 @@
 # OGP#7 Deterministic Tooling Validation
 
-Status: PASS
+Status: Owner review corrections validated; PASS
 
 Validation date: 2026-07-15
 
 Base: `main@446d8c9ffd07cf0893d86df4b19e0157da399606`
 
-Validated content HEAD: `2a57876182ab6a0e6064b0e38e4147403294aadd`
+Initial review HEAD: `15429d09fb7c840ef32391976988757bbd4257ed`
+
+Validated content HEAD: `2efd163b29f4e90f71cc17c3ef4fc18e05b06220`
 
 ## Evidence model
 
-The validated content HEAD contains the runtime integration, four public CLIs, the shared helper, fixtures, and unit tests. This evidence document is committed afterward as a separate evidence envelope.
+The validated content HEAD contains the runtime integration, four public CLIs, the shared helper, fixtures, unit tests, and all owner-review corrections. This evidence document is committed afterward as a separate evidence envelope.
+
+## Owner-review findings
+
+| ID | Severity | Finding | Disposition |
+| --- | --- | --- | --- |
+| OR-01 | P1 | An invalid custom required-block regex could raise an uncaught `re.error` and exit `1`, violating the stable `0/2/3` CLI contract. | Compile all required-block regexes during rules loading, convert invalid patterns to `ToolError`, return machine-readable operational output on stderr, and add a regression test. |
+| OR-02 | P1 | The manifest builder accepted an incomplete QA category map and did not verify that `score_total` equalled the six weighted category scores. | Require the six canonical categories with their maximum weights, reject unknown or missing categories, validate category values, reconcile the total, and add regression tests. |
+| OR-03 | P2 | Initial evidence did not execute the operational-exit contract for all four CLIs or the refusal to overwrite an existing package directory. | Add a dedicated owner-review regression suite covering missing inputs for all CLIs and existing package-directory refusal. |
+| OR-04 | P2 | The initial evidence statement grouped all decode failures as operational errors, although a decodable-path raster mismatch inside manifest validation is a deterministic validation failure. | Clarify the output contract: invocation and filesystem failures use stderr/exit `3`; invalid supplied content and contract mismatches use stdout/exit `2`. |
+
+The initial review HEAD was invalidated. All checks below were repeated after corrections.
 
 ## Scope
 
@@ -25,6 +38,7 @@ Validated artifacts:
 - `skill/obsidian-gold-image-pipeline/scripts/build_manifest.py`;
 - `skill/obsidian-gold-image-pipeline/scripts/package_asset.py`;
 - `tests/test_tooling.py`;
+- `tests/test_tooling_review.py`;
 - positive and negative prompt and manifest fixtures.
 
 ## Commands
@@ -35,7 +49,9 @@ python3 -m py_compile \
   skill/obsidian-gold-image-pipeline/scripts/validate_prompt.py \
   skill/obsidian-gold-image-pipeline/scripts/inspect_image.py \
   skill/obsidian-gold-image-pipeline/scripts/build_manifest.py \
-  skill/obsidian-gold-image-pipeline/scripts/package_asset.py
+  skill/obsidian-gold-image-pipeline/scripts/package_asset.py \
+  tests/test_tooling.py \
+  tests/test_tooling_review.py
 
 python3 -m unittest discover -s tests -p 'test_*.py' -v
 
@@ -88,11 +104,24 @@ pillow=12.2.0
 py_compile=PASS
 cli_tools=4
 cli_help=4
-unit_tests=12
+unit_tests=17
 unit_tests_result=PASS
 ```
 
-All four help commands exited `0`. Routine help and passing CLI commands produced no stderr output. The negative prompt fixture returned a machine-readable validation report on stdout and exited `2`, as specified.
+All four help commands exited `0`. Passing CLI commands produced no stderr output. The negative prompt fixture returned a machine-readable validation report on stdout and exited `2`, as specified.
+
+The owner-review regression suite additionally confirmed:
+
+```text
+invalid_custom_regex_exit=3
+missing_input_exit_validate_prompt=3
+missing_input_exit_inspect_image=3
+missing_input_exit_build_manifest=3
+missing_input_exit_package_asset=3
+existing_package_directory_rejected=True
+qa_category_completeness=True
+qa_score_total_reconciled=True
+```
 
 ### Prompt validation
 
@@ -134,7 +163,10 @@ manifest_sha256=93cfc9898df373b784fdb0c0c2111e36950365a628626e710abb93e21d1d68bf
 created_at_explicit=True
 created_at_timezone_required=True
 scene_fields_complete=True
+scene_mode_consistent=True
 qa_fields_complete=True
+qa_categories=6
+qa_score_total_reconciled=True
 output_dimensions_verified=True
 output_format_verified=True
 ```
@@ -163,21 +195,21 @@ The final image, manifest, and supplied preview retained their source hashes. Pa
 ### Repository hygiene
 
 ```text
-validated_text_files=14
+validated_text_files=15
 ascii_only=True
 final_newlines=True
 input_overwrite_protection=True
 ```
 
-## Stable exit codes
+## Stable exit and output contract
 
 ```text
 0 = deterministic checks passed
-2 = deterministic validation failed
-3 = operational error
+2 = supplied content or deterministic contract validation failed
+3 = invocation, configuration, input access, decode-at-inspection, output collision, or filesystem operation failed
 ```
 
-Validation failures are machine-readable on stdout. Missing files, invalid JSON, decode failures, output collisions, and filesystem errors produce operational reports on stderr.
+Exit `0` and `2` reports are machine-readable on stdout. Operational exit `3` reports are machine-readable on stderr. The manifest builder treats a reachable but invalid selected raster or declared metadata mismatch as content validation failure `2`; the raster inspector treats inability to decode its primary input as operational failure `3`.
 
 ## Automation boundary
 
@@ -195,4 +227,4 @@ Corner sampling does not prove global background uniformity. The non-black bound
 
 ## Validation conclusion
 
-OGP#7 meets its deterministic validation, manifest, and packaging scope. The scripts are non-destructive, produce stable reports and exit codes, and do not claim authority over visual acceptance. Actual accepted, repairable, and rejected visual evidence remains in OGP#8.
+OGP#7 meets its deterministic validation, manifest, and packaging scope. All owner-review findings are corrected. The scripts are non-destructive, produce stable reports and exit codes, and do not claim authority over visual acceptance. Actual accepted, repairable, and rejected visual evidence remains in OGP#8.
