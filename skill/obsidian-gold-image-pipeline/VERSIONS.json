@@ -1,0 +1,10 @@
+{
+  "distribution_contract": "1.0.0",
+  "manifest_schema": "1.0.0",
+  "prompt_schema": "1.0.0",
+  "qa_schema": "1.0.0",
+  "release_candidate": "0.1.0-rc.1",
+  "skill": "0.1.0",
+  "style_core": "1.0.0",
+  "tool_contract": "1.0.0"
+}
