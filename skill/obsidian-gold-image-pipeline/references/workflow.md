@@ -63,3 +63,4 @@ Proceed only when one explicit `edit_target`, one requested change, and all `kee
 - Do not skip full QA after a repair.
 - Do not present an internal path, textual description, SVG, HTML, or CSS as the requested raster result.
 - Do not end without `DELIVERY_READY` or an explicit `DELIVERY_MISSING`, `DELIVERY_FAILED`, or `DELIVERY_BLOCKED` statement.
+
