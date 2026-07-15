@@ -9,6 +9,7 @@ RUNNER = SOURCE / "scripts/run_evals.py"
 class EvalRunnerTests(unittest.TestCase):
     def copy_suite(self, target: Path) -> None:
         shutil.copytree(SOURCE / "evals", target / "evals")
+        shutil.copytree(SOURCE / "examples", target / "examples")
 
     def run_runner(self, root: Path) -> subprocess.CompletedProcess[str]:
         return subprocess.run([sys.executable, str(RUNNER), "--root", str(root), "--output", str(root/"baseline.json"), "--raw-output", str(root/"raw.json")], capture_output=True, text=True)
@@ -54,5 +55,25 @@ class EvalRunnerTests(unittest.TestCase):
             result=self.run_runner(root)
             self.assertEqual(result.returncode,3)
             self.assertEqual(json.loads(result.stderr)["status"],"operational_error")
+
+    def test_failure_mismatch_fails(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp:
+            root=Path(tmp); self.copy_suite(root)
+            path=root/"evals/failure-cases.yaml"; data=json.loads(path.read_text())
+            data["cases"][0]["observed_code"]="WRONG"
+            path.write_text(json.dumps(data)+"\n")
+            result=self.run_runner(root)
+            self.assertEqual(result.returncode,2)
+            self.assertTrue(any("failure/F01" in item for item in json.loads(result.stdout)["errors"]))
+
+    def test_ogp8_diagnostic_mismatch_fails(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp:
+            root=Path(tmp); self.copy_suite(root)
+            path=root/"evals/visual-cases.yaml"; data=json.loads(path.read_text())
+            data["cases"][5]["diagnostic_codes"]=["lighting_error"]
+            path.write_text(json.dumps(data)+"\n")
+            result=self.run_runner(root)
+            self.assertEqual(result.returncode,2)
+            self.assertTrue(any("visual/repairable-01" in item for item in json.loads(result.stdout)["errors"]))
 
 if __name__=="__main__": unittest.main()
