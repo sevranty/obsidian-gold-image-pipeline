@@ -1,5 +1,6 @@
 {
   "errors": [],
+  "generated_at": "2026-07-15T00:00:00Z",
   "limitations": [
     "Static routing fixtures are not live platform telemetry.",
     "Workflow cases validate observable contract records, not hidden reasoning.",
@@ -30,5 +31,12 @@
     "boundary": 6,
     "negative": 10,
     "positive": 12
+  },
+  "versions": {
+    "manifest_schema": "1.0.0",
+    "prompt_schema": "1.0.0",
+    "qa_schema": "1.0.0",
+    "skill": "0.1.0",
+    "style_core": "1.0.0"
   }
 }
