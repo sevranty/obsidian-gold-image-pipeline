@@ -1,24 +1,70 @@
 {
-  "schema_version": "1.0.0",
-  "task": "OGP#8",
-  "review_mode": "manual_visual_rubric",
   "automated_aesthetic_claim": false,
-  "reviewer": "project owner-review agent",
   "cases": [
-    {"id":"accepted-01-symmetric-orb","score_total":92,"critical_defects":[],"verdict":"accepted"},
-    {"id":"accepted-02-hollow-portal","score_total":91,"critical_defects":[],"verdict":"accepted"},
-    {"id":"accepted-03-machinery","score_total":90,"critical_defects":[],"verdict":"accepted"},
-    {"id":"accepted-04-falcon","score_total":88,"critical_defects":[],"verdict":"accepted"},
-    {"id":"accepted-05-neural-core","score_total":93,"critical_defects":[],"verdict":"accepted"},
-    {"id":"repairable-01-edge-crop","score_total":80,"critical_defects":[],"diagnostic_codes":["composition_error"],"verdict":"repairable"},
-    {"id":"repairable-02-weak-light","score_total":78,"critical_defects":[],"diagnostic_codes":["lighting_error"],"verdict":"repairable"},
-    {"id":"repairable-03-gold-dominance","score_total":74,"critical_defects":[],"diagnostic_codes":["gold_ratio_error"],"verdict":"repairable"},
-    {"id":"repairable-04-stray-artifact","score_total":82,"critical_defects":[],"diagnostic_codes":["artifact_error"],"verdict":"repairable"},
-    {"id":"repairable-05-weak-silhouette","score_total":72,"critical_defects":[],"diagnostic_codes":["silhouette_error"],"verdict":"repairable"},
-    {"id":"rejected-01-environment-multiple","score_total":48,"critical_defects":["composition_error","background_error"],"verdict":"rejected"},
-    {"id":"rejected-02-stone-texture","score_total":54,"critical_defects":["material_error","style_drift"],"verdict":"rejected"},
-    {"id":"rejected-03-chrome","score_total":58,"critical_defects":["material_error","style_drift"],"verdict":"rejected"},
-    {"id":"rejected-04-extra-colors-light-bg","score_total":38,"critical_defects":["background_error","style_drift"],"verdict":"rejected"},
-    {"id":"rejected-05-crop-pseudotext","score_total":42,"critical_defects":["composition_error","text_or_logo_error"],"verdict":"rejected"}
-  ]
+    {
+      "category_scores": {"background_and_composition": 14, "lighting": 9, "material_and_gold": 18, "meaning_and_subject": 24, "silhouette_and_geometry": 18, "technical_and_artifact": 9},
+      "critical_defects": [], "diagnostic_codes": [], "id": "accepted-01-symmetric-orb", "known_limitations": ["Programmatic structural QA fixture; not image-generator performance evidence."], "recommended_action": "ACCEPT", "repairable": false, "score_total": 92, "verdict": "accepted"
+    },
+    {
+      "category_scores": {"background_and_composition": 14, "lighting": 8, "material_and_gold": 18, "meaning_and_subject": 24, "silhouette_and_geometry": 18, "technical_and_artifact": 9},
+      "critical_defects": [], "diagnostic_codes": [], "id": "accepted-02-hollow-portal", "known_limitations": ["Programmatic structural QA fixture; not image-generator performance evidence."], "recommended_action": "ACCEPT", "repairable": false, "score_total": 91, "verdict": "accepted"
+    },
+    {
+      "category_scores": {"background_and_composition": 13, "lighting": 8, "material_and_gold": 18, "meaning_and_subject": 24, "silhouette_and_geometry": 18, "technical_and_artifact": 9},
+      "critical_defects": [], "diagnostic_codes": [], "id": "accepted-03-machinery", "known_limitations": ["Programmatic structural QA fixture; not image-generator performance evidence."], "recommended_action": "ACCEPT", "repairable": false, "score_total": 90, "verdict": "accepted"
+    },
+    {
+      "category_scores": {"background_and_composition": 13, "lighting": 8, "material_and_gold": 18, "meaning_and_subject": 23, "silhouette_and_geometry": 17, "technical_and_artifact": 9},
+      "critical_defects": [], "diagnostic_codes": [], "id": "accepted-04-falcon", "known_limitations": ["Programmatic structural QA fixture; not image-generator performance evidence."], "recommended_action": "ACCEPT", "repairable": false, "score_total": 88, "verdict": "accepted"
+    },
+    {
+      "category_scores": {"background_and_composition": 14, "lighting": 8, "material_and_gold": 19, "meaning_and_subject": 24, "silhouette_and_geometry": 19, "technical_and_artifact": 9},
+      "critical_defects": [], "diagnostic_codes": [], "id": "accepted-05-neural-core", "known_limitations": ["Programmatic structural QA fixture; not image-generator performance evidence."], "recommended_action": "ACCEPT", "repairable": false, "score_total": 93, "verdict": "accepted"
+    },
+    {
+      "category_scores": {"background_and_composition": 9, "lighting": 7, "material_and_gold": 17, "meaning_and_subject": 23, "silhouette_and_geometry": 17, "technical_and_artifact": 7},
+      "critical_defects": [], "diagnostic_codes": ["composition_error"], "id": "repairable-01-edge-crop", "known_limitations": ["Programmatic structural QA fixture; not image-generator performance evidence."], "recommended_action": "TARGETED_REPAIR", "repairable": true, "score_total": 80, "verdict": "repairable"
+    },
+    {
+      "category_scores": {"background_and_composition": 13, "lighting": 3, "material_and_gold": 17, "meaning_and_subject": 22, "silhouette_and_geometry": 17, "technical_and_artifact": 6},
+      "critical_defects": [], "diagnostic_codes": ["lighting_error"], "id": "repairable-02-weak-light", "known_limitations": ["Programmatic structural QA fixture; not image-generator performance evidence."], "recommended_action": "TARGETED_REPAIR", "repairable": true, "score_total": 78, "verdict": "repairable"
+    },
+    {
+      "category_scores": {"background_and_composition": 13, "lighting": 7, "material_and_gold": 8, "meaning_and_subject": 22, "silhouette_and_geometry": 16, "technical_and_artifact": 8},
+      "critical_defects": [], "diagnostic_codes": ["gold_ratio_error"], "id": "repairable-03-gold-dominance", "known_limitations": ["Programmatic structural QA fixture; not image-generator performance evidence."], "recommended_action": "TARGETED_REPAIR", "repairable": true, "score_total": 74, "verdict": "repairable"
+    },
+    {
+      "category_scores": {"background_and_composition": 13, "lighting": 7, "material_and_gold": 17, "meaning_and_subject": 23, "silhouette_and_geometry": 18, "technical_and_artifact": 4},
+      "critical_defects": [], "diagnostic_codes": ["artifact_error"], "id": "repairable-04-stray-artifact", "known_limitations": ["Programmatic structural QA fixture; not image-generator performance evidence."], "recommended_action": "TARGETED_REPAIR", "repairable": true, "score_total": 82, "verdict": "repairable"
+    },
+    {
+      "category_scores": {"background_and_composition": 12, "lighting": 7, "material_and_gold": 16, "meaning_and_subject": 22, "silhouette_and_geometry": 8, "technical_and_artifact": 7},
+      "critical_defects": [], "diagnostic_codes": ["silhouette_error"], "id": "repairable-05-weak-silhouette", "known_limitations": ["Programmatic structural QA fixture; not image-generator performance evidence."], "recommended_action": "TARGETED_REPAIR", "repairable": true, "score_total": 72, "verdict": "repairable"
+    },
+    {
+      "category_scores": {"background_and_composition": 0, "lighting": 3, "material_and_gold": 10, "meaning_and_subject": 20, "silhouette_and_geometry": 14, "technical_and_artifact": 1},
+      "critical_defects": ["composition_error", "background_error"], "diagnostic_codes": ["composition_error", "background_error"], "id": "rejected-01-environment-multiple", "known_limitations": ["Programmatic structural QA fixture; not image-generator performance evidence."], "recommended_action": "REGENERATE", "repairable": false, "score_total": 48, "verdict": "rejected"
+    },
+    {
+      "category_scores": {"background_and_composition": 10, "lighting": 4, "material_and_gold": 5, "meaning_and_subject": 20, "silhouette_and_geometry": 14, "technical_and_artifact": 1},
+      "critical_defects": ["material_error", "style_drift"], "diagnostic_codes": ["material_error", "style_drift"], "id": "rejected-02-stone-texture", "known_limitations": ["Programmatic structural QA fixture; not image-generator performance evidence."], "recommended_action": "REGENERATE", "repairable": false, "score_total": 54, "verdict": "rejected"
+    },
+    {
+      "category_scores": {"background_and_composition": 10, "lighting": 4, "material_and_gold": 6, "meaning_and_subject": 21, "silhouette_and_geometry": 15, "technical_and_artifact": 2},
+      "critical_defects": ["material_error", "style_drift"], "diagnostic_codes": ["material_error", "style_drift"], "id": "rejected-03-chrome", "known_limitations": ["Programmatic structural QA fixture; not image-generator performance evidence."], "recommended_action": "REGENERATE", "repairable": false, "score_total": 58, "verdict": "rejected"
+    },
+    {
+      "category_scores": {"background_and_composition": 0, "lighting": 3, "material_and_gold": 4, "meaning_and_subject": 18, "silhouette_and_geometry": 12, "technical_and_artifact": 1},
+      "critical_defects": ["background_error", "style_drift"], "diagnostic_codes": ["background_error", "style_drift"], "id": "rejected-04-extra-colors-light-bg", "known_limitations": ["Programmatic structural QA fixture; not image-generator performance evidence."], "recommended_action": "REGENERATE", "repairable": false, "score_total": 38, "verdict": "rejected"
+    },
+    {
+      "category_scores": {"background_and_composition": 1, "lighting": 3, "material_and_gold": 10, "meaning_and_subject": 19, "silhouette_and_geometry": 8, "technical_and_artifact": 1},
+      "critical_defects": ["composition_error", "text_or_logo_error"], "diagnostic_codes": ["composition_error", "text_or_logo_error"], "id": "rejected-05-crop-pseudotext", "known_limitations": ["Programmatic structural QA fixture; not image-generator performance evidence."], "recommended_action": "REGENERATE", "repairable": false, "score_total": 42, "verdict": "rejected"
+    }
+  ],
+  "category_maxima": {"background_and_composition": 15, "lighting": 10, "material_and_gold": 20, "meaning_and_subject": 25, "silhouette_and_geometry": 20, "technical_and_artifact": 10},
+  "review_mode": "manual_visual_rubric",
+  "reviewer": "project owner-review agent",
+  "schema_version": "1.0.0",
+  "task": "OGP#8"
 }
