@@ -1,0 +1,109 @@
+{
+  "asset_id": "ogp-fixture-001",
+  "created_at": "2026-07-15T00:00:00Z",
+  "diagnostic_codes": [],
+  "final_prompt": "Generate a new raster digital sculpture from the declared content reference.\nPrimary subject: a recognizable tracked vehicle with preserved recognition features.\nSilhouette: preserve the outer contour, orientation, and key proportions.\nGeometry: deliberate faceted planar geometry with structural simplification.\nMaterials: matte manufactured obsidian-black body with satin gold accents covering 15-25%.\nLighting: one broad soft key light with minimal controlled reflections on gold accents.\nComposition: one isolated full object with generous negative space.\nBackground: uniform pure black background.\nFidelity: preserve subject recognition and silhouette fidelity.\nInput role: content reference.\nRemove and forbid: no environment or floor, no stone texture, no additional colors, no text, logo, or watermark.\nOutput: square 1:1 PNG raster.",
+  "iterations": [
+    {
+      "action": "generate",
+      "diagnostic_codes": [],
+      "index": 1
+    }
+  ],
+  "known_limitations": [
+    "Gold coverage was reviewed visually, not measured by pixels."
+  ],
+  "negative_constraints": [
+    "no environment",
+    "no text",
+    "no extra colors"
+  ],
+  "output_dimensions": {
+    "height": 256,
+    "width": 256
+  },
+  "output_format": "PNG",
+  "prompt_schema_version": "1.0.0",
+  "qa_result": {
+    "category_scores": {
+      "background_and_composition": 14,
+      "lighting": 9,
+      "material_and_gold": 19,
+      "meaning_and_subject": 24,
+      "silhouette_and_geometry": 19,
+      "technical_and_artifact": 9
+    },
+    "critical_defects": [],
+    "diagnostic_codes": [],
+    "known_limitations": [],
+    "recommended_action": "ACCEPT",
+    "repair_scope": null,
+    "repairable": false,
+    "score_total": 94,
+    "verdict": "ACCEPT"
+  },
+  "qa_schema_version": "1.0.0",
+  "reference_files": [
+    "reference.png"
+  ],
+  "reference_roles": [
+    {
+      "file": "reference.png",
+      "role": "content_reference"
+    }
+  ],
+  "scene_specification": {
+    "asset_type": "hero_object",
+    "background": "uniform pure black",
+    "camera": "neutral eye level",
+    "composition": "one isolated full object",
+    "geometry": "deliberate planar simplification",
+    "gold_placement": [
+      "track hubs",
+      "front blade edge"
+    ],
+    "gold_ratio": "15-25%",
+    "input_image_roles": [
+      {
+        "file": "reference.png",
+        "role": "content_reference"
+      }
+    ],
+    "lighting": "one broad soft key",
+    "materials": {
+      "accents": "gold",
+      "body": "obsidian"
+    },
+    "mode": "generate",
+    "must_not_add": [
+      "floor",
+      "extra colors"
+    ],
+    "must_preserve": [
+      "vehicle category",
+      "track silhouette"
+    ],
+    "must_remove": [
+      "environment",
+      "text"
+    ],
+    "negative_space": "generous",
+    "obsidian_finish": "matte manufactured",
+    "output_ratio": "1:1",
+    "output_usage": "hero asset",
+    "pose_or_orientation": "front three-quarter",
+    "primary_subject": "tracked vehicle",
+    "recognition_features": [
+      "continuous tracks",
+      "central cabin"
+    ],
+    "semantic_meaning": "durable engineered mobility",
+    "silhouette": "low wide tracked profile",
+    "silhouette_fidelity": "high",
+    "subject_fidelity": "high"
+  },
+  "selected_output": "accepted.png",
+  "skill_version": "0.1.0",
+  "style_core_version": "1.0.0",
+  "transformation_mode": "generate"
+}
