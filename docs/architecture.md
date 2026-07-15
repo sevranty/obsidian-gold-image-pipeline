@@ -21,8 +21,8 @@ The canonical output is:
 - isolated on a pure black background;
 - faceted, low-poly, or parametrically planar;
 - primarily matte obsidian-black;
-- accented with controlled gold covering 15-25% of the visible object area;
-- legible as a silhouette at 64 px;
+- accented with controlled gold targeting 15-25% of visible object area, with any below-target exception documented;
+- legible as a silhouette when fitted inside 64x64 px;
 - square by default unless the downstream use explicitly requires another ratio.
 
 ## 3. Non-goals
@@ -132,22 +132,22 @@ Only `skill/obsidian-gold-image-pipeline/` is intended for installation. Reposit
 
 ## 6. Source-of-truth map
 
-| Concern | Canonical location |
+| Concern | Authoritative location |
 | --- | --- |
 | Scope, boundaries, component responsibilities | `docs/architecture.md` |
 | Architectural rationale | `docs/decisions/` |
-| Normalized visual invariants | `references/style-definition.md` |
-| Concrete color, material, light, and ratio values | `references/style-tokens.md` |
-| How to inspect references | `references/reference-analysis.md` |
-| What is preserved, simplified, removed, or replaced | `references/transformation-contract.md` |
-| Generator-neutral desired output | `references/scene-specification.md` |
-| Prompt block construction | `references/prompt-architecture.md` |
-| Generate, edit, iteration, and stop rules | `references/generation-and-iteration.md` |
-| Acceptance and rejection | `references/visual-quality-assurance.md` |
-| Error-specific corrective actions | `references/repair-rules.md` |
-| Runtime ordering | `references/workflow.md` |
+| Normalized visual invariants | `skill/obsidian-gold-image-pipeline/references/style-definition.md` |
+| Concrete color, material, light, and ratio values | `skill/obsidian-gold-image-pipeline/references/style-tokens.md` |
+| How to inspect references | `skill/obsidian-gold-image-pipeline/references/reference-analysis.md` |
+| What is preserved, simplified, removed, or replaced | `skill/obsidian-gold-image-pipeline/references/transformation-contract.md` |
+| Generator-neutral desired output | `skill/obsidian-gold-image-pipeline/references/scene-specification.md` |
+| Prompt block construction | `skill/obsidian-gold-image-pipeline/references/prompt-architecture.md` |
+| Generate, edit, iteration, and stop rules | `skill/obsidian-gold-image-pipeline/references/generation-and-iteration.md` |
+| Acceptance and rejection | `skill/obsidian-gold-image-pipeline/references/visual-quality-assurance.md` |
+| Error-specific corrective actions | `skill/obsidian-gold-image-pipeline/references/repair-rules.md` |
+| Runtime ordering | `skill/obsidian-gold-image-pipeline/references/workflow.md` |
 
-A normative rule must exist in one canonical location. Other files link to it instead of restating it.
+A normative rule has one authoritative definition. Downstream schemas and templates may repeat a value for execution, but they must not redefine it and must be reviewed whenever the authoritative source changes.
 
 ## 7. Failure and stop model
 
@@ -194,9 +194,10 @@ Foundation is complete when:
 - architecture and dependencies are explicit;
 - style conflicts are resolved into one normative core;
 - reference analysis produces a complete transformation contract;
+- subject, silhouette, and composition fidelity remain explicit across schemas;
 - scene specification is generator-neutral;
 - generate and edit contracts are distinct;
-- visual QA has critical defects, score thresholds, and diagnostic codes;
+- visual QA has critical defects, score thresholds, and unambiguous diagnostic codes;
 - every diagnostic code maps to a repair action;
 - runtime files contain no brand-specific organizational dependencies;
 - no required stage can be skipped by a future `SKILL.md`.
