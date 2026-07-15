@@ -47,6 +47,27 @@ def validate(root: Path) -> dict[str, Any]:
             outputs.extend(payload.get('cases', []))
     counts = inventory.get('counts', {})
 
+    for entry in inventory.get('verdict_indexes', []):
+        index_path = root / entry.get('path', '')
+        if not index_path.exists():
+            fail(errors, f"verdict index missing: {entry.get('path')}")
+        elif sha(index_path) != entry.get('sha256'):
+            fail(errors, f"verdict index checksum mismatch: {entry.get('path')}")
+
+    checksum_path = root / inventory.get('materialized_checksums', '')
+    declared_checksums: dict[str, str] = {}
+    if not checksum_path.exists():
+        fail(errors, 'materialized checksum manifest missing')
+    else:
+        for line in checksum_path.read_text(encoding='utf-8').splitlines():
+            digest, separator, relative = line.partition('  ')
+            if not separator or len(digest) != 64:
+                fail(errors, f'invalid checksum line: {line}')
+                continue
+            declared_checksums[relative] = digest
+        if len(declared_checksums) != 55:
+            fail(errors, f'materialized checksum entries must be 55, got {len(declared_checksums)}')
+
     expected_counts = {'coverage_cases':10,'accepted':5,'repairable':5,'rejected':5,'runtime_anchors':3}
     for key, expected in expected_counts.items():
         if counts.get(key) != expected:
@@ -92,8 +113,11 @@ def validate(root: Path) -> dict[str, Any]:
                 fail(errors, f'{rid}: missing {rel}')
                 continue
             checked_files += 1
-            if sha(path) != record.get(hash_field):
+            actual_digest = sha(path)
+            if actual_digest != record.get(hash_field):
                 fail(errors, f'{rid}: checksum mismatch for {rel}')
+            if declared_checksums.get(rel) != actual_digest:
+                fail(errors, f'{rid}: materialized checksum manifest mismatch for {rel}')
             with Image.open(path) as image:
                 image.load()
                 if image.format != 'PNG':
@@ -116,6 +140,8 @@ def validate(root: Path) -> dict[str, Any]:
             else:
                 if not report.get('source_preserved'):
                     fail(errors, f'{rid}: OGP#7 source_preserved false')
+                if report.get('source_sha256') != record.get('image_sha256'):
+                    fail(errors, f'{rid}: OGP#7 report SHA does not match indexed image')
                 if report.get('width') != 512 or report.get('height') != 512 or report.get('format') != 'PNG':
                     fail(errors, f'{rid}: OGP#7 technical dimensions/format mismatch')
                 if record.get('verdict') == 'accepted' and report.get('exit_code') != 0:
@@ -126,10 +152,14 @@ def validate(root: Path) -> dict[str, Any]:
     anchors = sorted((root / 'skill/obsidian-gold-image-pipeline/assets/anchors').glob('*.svg'))
     if len(anchors) != 3:
         fail(errors, f'runtime SVG anchors must be 3, got {len(anchors)}')
+    anchor_inventory = {entry.get('path'): entry for entry in inventory.get('runtime_anchors', [])}
     for path in anchors:
         text = path.read_text(encoding='utf-8')
+        relative = path.relative_to(root).as_posix()
         if 'width="64"' not in text or 'height="64"' not in text:
             fail(errors, f'runtime SVG anchor must declare 64x64: {path.name}')
+        if anchor_inventory.get(relative, {}).get('sha256') != sha(path):
+            fail(errors, f'runtime anchor inventory checksum mismatch: {relative}')
 
     text_files = sorted(p for p in root.rglob('*') if p.is_file() and p.suffix.lower() in {'.md','.json','.txt','.py','.yaml','.yml'})
     for path in text_files:
@@ -146,38 +176,17 @@ def validate(root: Path) -> dict[str, Any]:
             fail(errors, f'non-ASCII repository path: {rel}')
 
     return {
-        'schema_version':'1.0.0',
-        'task':'OGP#8',
-        'status':'pass' if not errors else 'fail',
-        'counts':counts,
-        'verdict_counts':verdict_counts,
-        'checked_binary_references_and_outputs':checked_files,
-        'inspection_reports':len(inspection_by_id),
-        'runtime_anchors':len(anchors),
-        'text_files_checked':len(text_files),
-        'ascii_paths':not any('non-ASCII repository path' in e for e in errors),
-        'forbidden_tokens_absent':not any('forbidden token' in e for e in errors),
-        'errors':errors,
-        'warnings':warnings,
-        'limitations':[
-            'OGP#7 deterministic inspection does not judge aesthetics, material realism, semantic recognition, or gold coverage.',
-            'All visual verdicts are structural manual-rubric fixtures, not image-generator performance claims.'
-        ]
+        'schema_version':'1.0.0','task':'OGP#8','status':'pass' if not errors else 'fail','counts':counts,'verdict_counts':verdict_counts,
+        'checked_binary_references_and_outputs':checked_files,'inspection_reports':len(inspection_by_id),'runtime_anchors':len(anchors),'text_files_checked':len(text_files),
+        'ascii_paths':not any('non-ASCII repository path' in e for e in errors),'forbidden_tokens_absent':not any('forbidden token' in e for e in errors),'errors':errors,'warnings':warnings,
+        'limitations':['OGP#7 deterministic inspection does not judge aesthetics, material realism, semantic recognition, or gold coverage.','All visual verdicts are structural manual-rubric fixtures, not image-generator performance claims.']
     }
 
 
 def main(argv: list[str] | None = None) -> int:
-    parser=argparse.ArgumentParser()
-    parser.add_argument('--root',type=Path,default=Path(__file__).resolve().parents[1])
-    parser.add_argument('--output',type=Path)
-    args=parser.parse_args(argv)
-    report=validate(args.root.resolve())
-    payload=json.dumps(report,indent=2,sort_keys=True)+"\n"
-    if args.output:
-        args.output.parent.mkdir(parents=True,exist_ok=True)
-        args.output.write_text(payload,encoding='utf-8')
-    sys.stdout.write(payload)
-    return 0 if report['status']=='pass' else 2
+    parser=argparse.ArgumentParser(); parser.add_argument('--root',type=Path,default=Path(__file__).resolve().parents[1]); parser.add_argument('--output',type=Path); args=parser.parse_args(argv); report=validate(args.root.resolve()); payload=json.dumps(report,indent=2,sort_keys=True)+"\n"
+    if args.output: args.output.parent.mkdir(parents=True,exist_ok=True); args.output.write_text(payload,encoding='utf-8')
+    sys.stdout.write(payload); return 0 if report['status']=='pass' else 2
 
 if __name__=='__main__':
     raise SystemExit(main())
