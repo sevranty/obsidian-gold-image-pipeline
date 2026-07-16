@@ -1,6 +1,8 @@
 #!/usr/bin/env python3
 from __future__ import annotations
 
+import hashlib
+import json
 import shutil
 import sys
 import tempfile
@@ -42,6 +44,21 @@ class DistributionTests(unittest.TestCase):
             self.assertTrue(all(name.startswith("obsidian-gold-image-pipeline/") for name in names))
             self.assertFalse(any("README.md" in name or "/docs/" in name for name in names))
 
+    def test_manifest_records_file_checksums_and_unpublished_release(self) -> None:
+        with tempfile.TemporaryDirectory() as temporary:
+            root = Path(temporary)
+            archive, manifest_path = root / "skill.zip", root / "manifest.json"
+            manifest = build_skill_package.build(SKILL, archive, manifest_path)
+            persisted = json.loads(manifest_path.read_text(encoding="utf-8"))
+            self.assertEqual(manifest, persisted)
+            self.assertFalse(persisted["release_published"])
+            self.assertEqual(persisted["release_candidate"], "0.1.0-rc.1")
+            self.assertEqual(persisted["archive_sha256"], hashlib.sha256(archive.read_bytes()).hexdigest())
+            self.assertEqual(persisted["license_sha256"], hashlib.sha256((ROOT / "LICENSE").read_bytes()).hexdigest())
+            self.assertEqual(set(persisted["files"]), set(persisted["file_sha256"]))
+            for relative, digest in persisted["file_sha256"].items():
+                self.assertEqual(digest, hashlib.sha256((SKILL / relative).read_bytes()).hexdigest())
+
     def test_smoke_test_passes(self) -> None:
         with tempfile.TemporaryDirectory() as temporary:
             root = Path(temporary)
@@ -59,6 +76,17 @@ class DistributionTests(unittest.TestCase):
             copy = root / "skill/obsidian-gold-image-pipeline"
             shutil.copytree(SKILL, copy)
             (copy / "README.md").write_text("not runtime\n", encoding="utf-8")
+            with self.assertRaises(build_skill_package.PackageError):
+                build_skill_package.validate_skill_tree(copy)
+
+
+    def test_symlink_in_skill_tree_is_rejected(self) -> None:
+        with tempfile.TemporaryDirectory() as temporary:
+            root = Path(temporary)
+            (root / "LICENSE").write_bytes((ROOT / "LICENSE").read_bytes())
+            copy = root / "skill/obsidian-gold-image-pipeline"
+            shutil.copytree(SKILL, copy)
+            (copy / "leaked-license.txt").symlink_to(root / "LICENSE")
             with self.assertRaises(build_skill_package.PackageError):
                 build_skill_package.validate_skill_tree(copy)
 
@@ -82,6 +110,13 @@ class DistributionTests(unittest.TestCase):
             manifest.write_text('{"archive_sha256":"' + smoke_test_install.digest(archive) + '"}\n', encoding="utf-8")
             with self.assertRaises(smoke_test_install.SmokeError):
                 smoke_test_install.smoke(archive, manifest)
+
+
+    def test_archive_and_manifest_paths_must_differ(self) -> None:
+        with tempfile.TemporaryDirectory() as temporary:
+            output = Path(temporary) / "same-output"
+            with self.assertRaises(build_skill_package.PackageError):
+                build_skill_package.build(SKILL, output, output)
 
     def test_outputs_inside_source_are_rejected(self) -> None:
         with tempfile.TemporaryDirectory() as temporary:

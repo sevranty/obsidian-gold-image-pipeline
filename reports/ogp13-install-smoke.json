@@ -1,0 +1,41 @@
+{
+  "archive_sha256": "10bf8e0ff242f538b62d18a8e39a0c25b20f1a38c91a7aacf5c15646dce54abd",
+  "cli_help_commands": 4,
+  "commands": [
+    {
+      "exit_code": 0,
+      "script": "validate_prompt.py",
+      "stderr_bytes": 0
+    },
+    {
+      "exit_code": 0,
+      "script": "inspect_image.py",
+      "stderr_bytes": 0
+    },
+    {
+      "exit_code": 0,
+      "script": "build_manifest.py",
+      "stderr_bytes": 0
+    },
+    {
+      "exit_code": 0,
+      "script": "package_asset.py",
+      "stderr_bytes": 0
+    }
+  ],
+  "installed_path": ".agents/skills/obsidian-gold-image-pipeline",
+  "prompt_validation_exit": 0,
+  "release_published": false,
+  "schema_version": "1.0.0",
+  "status": "pass",
+  "versions": {
+    "distribution_contract": "1.0.0",
+    "manifest_schema": "1.0.0",
+    "prompt_schema": "1.0.0",
+    "qa_schema": "1.0.0",
+    "release_candidate": "0.1.0-rc.1",
+    "skill": "0.1.0",
+    "style_core": "1.0.0",
+    "tool_contract": "1.0.0"
+  }
+}
