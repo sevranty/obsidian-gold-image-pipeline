@@ -45,3 +45,13 @@ python3 scripts/smoke_test_install.py \
 8. Publication requires a separate direct owner instruction.
 
 No Git tag, GitHub Release, marketplace submission, or public binary is created by OGP#10.
+
+## WebFactoryOS independence
+
+- OGP release candidates are built, validated and reviewed from local repository sources.
+- OGP releases include skill runtime, style contracts, validators, evals, assets and packages owned by this repository.
+- WebFactoryOS registry, routing, orchestration status and cross-project relations are not release inputs.
+- WebFactoryOS availability never blocks OGP runtime, local validation or release candidate promotion.
+- WFO#69 may reference OGP routing status without granting write access: https://github.com/sevranty/web-factory-os/issues/69
+- WFO#65 remains the naming source of truth without copying grammar into release files: https://github.com/sevranty/web-factory-os/issues/65
+- No WFO code, registry copy, workflow or pinned dependency enters an OGP release candidate.
