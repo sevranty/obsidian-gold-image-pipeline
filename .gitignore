@@ -1,0 +1,2 @@
+# Generated release-candidate archives are validation outputs, not committed publications.
+dist/*.zip
