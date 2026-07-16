@@ -60,3 +60,16 @@ workflow.md
 ## Merge order
 
 Foundation may be delivered in one PR because the repository is empty and the files form one mutually consistent baseline. Future modifications should use one issue and one focused PR per concern unless an atomic cross-file schema migration is required.
+
+## WebFactoryOS orchestration links
+
+- OGP#1 remains the local project status source: https://github.com/sevranty/obsidian-gold-image-pipeline/issues/1
+- OGP#22 completes product closure independently of registry work: https://github.com/sevranty/obsidian-gold-image-pipeline/issues/22
+- WFO#69 owns reciprocal remote routing only: https://github.com/sevranty/web-factory-os/issues/69
+- WFO#65 owns naming source of truth only: https://github.com/sevranty/web-factory-os/issues/65
+- WFO#39 is shared onboarding context, not copied implementation: https://github.com/sevranty/web-factory-os/issues/39
+- OGP owns runtime dependencies and package contents.
+- WebFactoryOS owns registry, routing status and cross-project relations.
+- No WebFactoryOS relation changes OGP write authority.
+- Active execution order remains `OGP#13 -> OGP#11 -> OGP#12`.
+- Migration does not reset, replace or edit PR #20 current execution evidence.

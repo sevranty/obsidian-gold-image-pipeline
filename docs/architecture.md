@@ -201,3 +201,14 @@ Foundation is complete when:
 - every diagnostic code maps to a repair action;
 - runtime files contain no brand-specific organizational dependencies;
 - no required stage can be skipped by a future `SKILL.md`.
+
+## 10. WebFactoryOS orchestration boundary
+
+- OGP owns skill code, style contracts, validators, evals, assets, packages and releases in this repository.
+- WebFactoryOS owns project registry, routing, orchestration status and cross-project relations outside this repository.
+- Remote routing is tracked by WFO#69: https://github.com/sevranty/web-factory-os/issues/69
+- Naming is sourced from WFO#65: https://github.com/sevranty/web-factory-os/issues/65
+- OGP does not copy the WebFactoryOS registry or naming grammar.
+- A WebFactoryOS relation never grants write access to OGP.
+- OGP build, validation and release candidate work remain local and autonomous.
+- WebFactoryOS availability never blocks OGP runtime or local validation.
