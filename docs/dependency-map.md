@@ -64,12 +64,15 @@ Foundation may be delivered in one PR because the repository is empty and the fi
 ## WebFactoryOS orchestration links
 
 - OGP#1 remains the local project status source: https://github.com/sevranty/obsidian-gold-image-pipeline/issues/1
-- OGP#22 completes product closure independently of registry work: https://github.com/sevranty/obsidian-gold-image-pipeline/issues/22
+- OGP#22 owns overall product closure independently of registry work: https://github.com/sevranty/obsidian-gold-image-pipeline/issues/22
+- OGP#21 owns the local handoff contract: https://github.com/sevranty/obsidian-gold-image-pipeline/issues/21
+- The OGP#21 implementation is merged through PR #24: https://github.com/sevranty/obsidian-gold-image-pipeline/pull/24
 - WFO#69 owns reciprocal remote routing only: https://github.com/sevranty/web-factory-os/issues/69
-- WFO#65 owns naming source of truth only: https://github.com/sevranty/web-factory-os/issues/65
-- WFO#39 is shared onboarding context, not copied implementation: https://github.com/sevranty/web-factory-os/issues/39
-- OGP owns runtime dependencies and package contents.
+- WFO#102 and PR #103 completed the remote OGP registry record and relation.
+- WFO#65 remains the naming source of truth without copying its grammar into OGP: https://github.com/sevranty/web-factory-os/issues/65
+- WFO#39 remains shared onboarding context, not copied implementation: https://github.com/sevranty/web-factory-os/issues/39
+- OGP owns runtime dependencies, validation, package contents and release candidates.
 - WebFactoryOS owns registry, routing status and cross-project relations.
-- No WebFactoryOS relation changes OGP write authority.
-- Active execution order remains `OGP#13 -> OGP#11 -> OGP#12`.
-- Migration does not reset, replace or edit PR #20 current execution evidence.
+- Relation `WFO-069__OGP-021` grants no write access to OGP.
+- OGP#13, OGP#11 and OGP#12 remain separate product scopes and are not changed by OGP#21 closure.
+- PR #20 is historical pilot implementation evidence and is not modified by OGP#21 closure.
