@@ -2,7 +2,7 @@
 
 A mono-style Agent Skill for turning one or more visual references into one isolated black-and-gold digital sculpture, or for repairing an existing Obsidian Gold asset under explicit preservation constraints.
 
-![Obsidian Gold transformation from a self-authored wireframe reference to a faceted obsidian-and-gold portal](assets/repository-cover.png)
+![Obsidian Gold transformation from a self-authored wireframe reference to a faceted obsidian-and-gold portal](assets/repository-cover.svg)
 
 The repository cover is a self-authored deterministic geometry example approved in [OGP#12](https://github.com/sevranty/obsidian-gold-image-pipeline/issues/12). It demonstrates the transformation contract visually without claiming live third-party generator quality.
 
@@ -14,7 +14,7 @@ The repository cover is a self-authored deterministic geometry example approved 
 | Release candidate | `0.1.0-rc.1` |
 | Publication | Not published |
 | Deterministic pilot evidence | PASS |
-| Repository cover | Approved OGP#12 asset |
+| Repository cover | Approved OGP#12 canonical SVG |
 | Live image-generator aesthetic claim | Not established |
 | GitHub Actions claim | None |
 
@@ -201,8 +201,10 @@ The pilot uses deterministic programmatic fixtures. It validates orchestration a
 
 ## Visual examples
 
-The repository cover is the approved OGP#12 visual example. It uses one self-authored portal subject shown as a wireframe reference and a faceted final state.
+The repository cover is the approved OGP#12 visual example. It uses one self-authored portal subject shown as a wireframe reference and a faceted final state. The committed source of truth is SVG; raster PNG/WebP exports were generated and inspected during review but remain build outputs rather than versioned release binaries.
 
+- Cover: [`assets/repository-cover.svg`](assets/repository-cover.svg)
+- Social-preview source: [`assets/social-preview.svg`](assets/social-preview.svg)
 - Source: [`assets/source/reference-portal-wireframe.svg`](assets/source/reference-portal-wireframe.svg)
 - Manifest and export checksums: [`assets/cover-source-manifest.json`](assets/cover-source-manifest.json)
 - Benchmark and concept decision: [`docs/research/project-cover-benchmark.md`](docs/research/project-cover-benchmark.md)
@@ -215,7 +217,7 @@ This asset demonstrates the repository's transformation contract. It is not pres
 ```text
 README.md                         public project entry point
 CONTRIBUTING.md                   contribution and review contract
-assets/                           repository cover, social preview, concepts, source and manifest
+assets/                           canonical SVG cover, social preview, concepts, source and manifest
 docs/architecture.md              scope and component boundaries
 docs/research/                    public research and comparisons
 docs/reviews/                     review and validation records
