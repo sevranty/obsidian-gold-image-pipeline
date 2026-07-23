@@ -1,0 +1,36 @@
+{
+  "schema_version": "1.0.0",
+  "task": "OGP#12",
+  "selected_concept": "portal",
+  "source": {
+    "path": "assets/source/reference-portal-wireframe.svg",
+    "type": "self-authored deterministic vector geometry",
+    "rights": "Created for this repository; no third-party assets, logos, personal data, or private material."
+  },
+  "rendering": {
+    "executor": "Pillow deterministic geometry renderer",
+    "background": "#000000",
+    "cover_dimensions": [1280, 640],
+    "social_preview_dimensions": [1280, 640],
+    "palette": ["#000000", "#080809", "#151518", "#26262A", "#C7A256", "#EBCD81"],
+    "text_inside_image": false,
+    "release_published": false
+  },
+  "qa": {
+    "verdict": "ACCEPT",
+    "score_total": 95,
+    "critical_defects": [],
+    "diagnostic_codes": [],
+    "review": "docs/reviews/ogp12-cover-validation.md"
+  },
+  "exports": {
+    "assets/repository-cover.png": {"bytes": 40589, "sha256": "361433db64a80c8d1c20fa08b8eb849f0f69f30692095bf7a408f7e32debf1d1"},
+    "assets/repository-cover.webp": {"bytes": 26420, "sha256": "ef3ba58e3a49407e978e8905db80990b5c9b388c0cf7bc12afd63e8a6bc5c818"},
+    "assets/social-preview.png": {"bytes": 40589, "sha256": "361433db64a80c8d1c20fa08b8eb849f0f69f30692095bf7a408f7e32debf1d1"},
+    "assets/repository-cover-64px.png": {"bytes": 770, "sha256": "de6b7c119607ed3a28a9a37c5b7d00053931a46bb3cc17bfa91584fb16fdf5a7"},
+    "assets/concepts/concept-portal.png": {"bytes": 14692, "sha256": "6871670956501549e1719fb8e2d33e235acffdd7502606d6cfe0e5b364a1d95d"},
+    "assets/concepts/concept-prism.png": {"bytes": 7394, "sha256": "d26258d0198ddbed736a19981198fe8c7ecf7b63ec8688addcb0ffa119fcf128"},
+    "assets/concepts/concept-core.png": {"bytes": 10788, "sha256": "b668a8f0268d09103afb14cee6f151a6f585bce04314e6c521c3b4343789daf8"},
+    "assets/source/reference-portal-wireframe.svg": {"bytes": 553, "sha256": "7c2b2c7bb086d1adca92dff47f3511c71cc2d7be4b9825d4adf3dcf9e312fce3"}
+  }
+}
