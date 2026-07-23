@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="640" viewBox="0 0 1280 640" role="img" aria-labelledby="title desc">
+<title id="title">Obsidian Gold transformation cover</title>
+<desc id="desc">A self-authored portal shown as a gold wireframe reference transforming into a faceted obsidian and gold sculpture.</desc>
+<rect width="1280" height="640" fill="#000000"/>
+<g fill="none" stroke="#C7A256" stroke-linejoin="round">
+  <ellipse cx="310" cy="320" rx="185" ry="225" stroke-width="3" opacity=".9"/>
+  <ellipse cx="310" cy="320" rx="152" ry="185" stroke-width="2" opacity=".35"/>
+  <ellipse cx="310" cy="320" rx="88" ry="122" stroke-width="3" opacity=".82"/>
+  <path d="M310 95L310 198M402 125L352 214M470 208L389 255M495 320L398 320M470 432L389 385M402 515L352 426M310 545L310 442M218 515L268 426M150 432L231 385M125 320L222 320M150 208L231 255M218 125L268 214" stroke-width="1.5" opacity=".48"/>
+</g>
+<g fill="none" stroke="#C7A256" stroke-width="3" stroke-linejoin="round">
+  <path d="M539 304L571 320L539 336" opacity=".78"/>
+  <path d="M604 304L636 320L604 336" opacity=".62"/>
+  <path d="M669 304L701 320L669 336" opacity=".46"/>
+</g>
+<g stroke="#050506" stroke-width="1">
+  <polygon points="940,95 988,103 984,201 940,198" fill="#765722"/>
+  <polygon points="988,103 1033,125 1024,214 984,201" fill="#C7A256"/>
+  <polygon points="1033,125 1071,161 1058,233 1024,214" fill="#C7A256"/>
+  <polygon points="1071,161 1100,208 1081,255 1058,233" fill="#26262A"/>
+  <polygon points="1100,208 1119,263 1094,287 1081,255" fill="#1D1D21"/>
+  <polygon points="1119,263 1125,320 1028,320 1094,287" fill="#151518"/>
+  <polygon points="1125,320 1119,377 1094,353 1028,320" fill="#0E0E10"/>
+  <polygon points="1119,377 1100,432 1081,385 1094,353" fill="#080809"/>
+  <polygon points="1100,432 1071,479 1058,407 1081,385" fill="#151518"/>
+  <polygon points="1071,479 1033,515 1024,426 1058,407" fill="#1D1D21"/>
+  <polygon points="1033,515 988,537 984,439 1024,426" fill="#C7A256"/>
+  <polygon points="988,537 940,545 940,442 984,439" fill="#765722"/>
+  <polygon points="940,545 892,537 896,439 940,442" fill="#080809"/>
+  <polygon points="892,537 847,515 856,426 896,439" fill="#0E0E10"/>
+  <polygon points="847,515 809,479 822,407 856,426" fill="#151518"/>
+  <polygon points="809,479 780,432 799,385 822,407" fill="#1D1D21"/>
+  <polygon points="780,432 761,377 786,353 799,385" fill="#26262A"/>
+  <polygon points="761,377 755,320 852,320 786,353" fill="#151518"/>
+  <polygon points="755,320 761,263 786,287 852,320" fill="#0E0E10"/>
+  <polygon points="761,263 780,208 799,255 786,287" fill="#080809"/>
+  <polygon points="780,208 809,161 822,233 799,255" fill="#0E0E10"/>
+  <polygon points="809,161 847,125 856,214 822,233" fill="#151518"/>
+  <polygon points="847,125 892,103 896,201 856,214" fill="#1D1D21"/>
+  <polygon points="892,103 940,95 940,198 896,201" fill="#26262A"/>
+</g>
+<ellipse cx="940" cy="320" rx="88" ry="122" fill="none" stroke="#EBCD81" stroke-width="4"/>
+<path d="M797 172C822 129 853 105 888 98" fill="none" stroke="#78787E" stroke-width="2" opacity=".55"/>
+</svg>

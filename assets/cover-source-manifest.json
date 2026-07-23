@@ -1,0 +1,39 @@
+{
+  "schema_version": "1.1.0",
+  "task": "OGP#12",
+  "selected_concept": "portal",
+  "asset_model": "canonical SVG committed; raster exports are local build/review outputs",
+  "source": {
+    "path": "assets/source/reference-portal-wireframe.svg",
+    "type": "self-authored deterministic vector geometry",
+    "rights": "Created for this repository; no third-party assets, logos, personal data, or private material."
+  },
+  "rendering": {
+    "background": "#000000",
+    "dimensions": [1280, 640],
+    "palette": ["#000000", "#080809", "#0E0E10", "#151518", "#1D1D21", "#26262A", "#765722", "#C7A256", "#EBCD81"],
+    "text_inside_image": false,
+    "release_published": false,
+    "repository_settings_changed": false
+  },
+  "qa": {
+    "verdict": "ACCEPT",
+    "score_total": 95,
+    "critical_defects": [],
+    "diagnostic_codes": [],
+    "review": "docs/reviews/ogp12-cover-validation.md"
+  },
+  "committed_assets": {
+    "assets/repository-cover.svg": {"bytes": 7780, "sha256": "26cb4888912d508ccb52f3cbfcee9b7fd9173af0bef4b80c0d157334762f1866", "committed": true},
+    "assets/social-preview.svg": {"bytes": 7780, "sha256": "26cb4888912d508ccb52f3cbfcee9b7fd9173af0bef4b80c0d157334762f1866", "committed": true},
+    "assets/concepts/concept-portal.svg": {"bytes": 7780, "sha256": "26cb4888912d508ccb52f3cbfcee9b7fd9173af0bef4b80c0d157334762f1866", "committed": true},
+    "assets/concepts/concept-prism.svg": {"bytes": 777, "sha256": "fcbdd2b4910612652c878c8c87256218b2ff5fb09108d9f63e3baa963b598486", "committed": true},
+    "assets/concepts/concept-core.svg": {"bytes": 1317, "sha256": "fe2e510d1785a76f2e27ce0608b02401a09dbd3c2e8502652ca439efb36451bd", "committed": true},
+    "assets/source/reference-portal-wireframe.svg": {"bytes": 553, "sha256": "7c2b2c7bb086d1adca92dff47f3511c71cc2d7be4b9825d4adf3dcf9e312fce3", "committed": true}
+  },
+  "local_raster_evidence": {
+    "repository-cover.png": {"bytes": 40589, "sha256": "361433db64a80c8d1c20fa08b8eb849f0f69f30692095bf7a408f7e32debf1d1", "committed": false},
+    "repository-cover.webp": {"bytes": 26420, "sha256": "ef3ba58e3a49407e978e8905db80990b5c9b388c0cf7bc12afd63e8a6bc5c818", "committed": false},
+    "repository-cover-64px.png": {"bytes": 770, "sha256": "de6b7c119607ed3a28a9a37c5b7d00053931a46bb3cc17bfa91584fb16fdf5a7", "committed": false}
+  }
+}

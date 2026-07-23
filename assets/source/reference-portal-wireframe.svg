@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="800" viewBox="0 0 800 800">
+  <rect width="800" height="800" fill="#000000"/>
+  <g fill="none" stroke="#C7A256" stroke-width="4" stroke-linejoin="round" opacity="0.9">
+    <ellipse cx="400" cy="400" rx="230" ry="270"/>
+    <ellipse cx="400" cy="400" rx="115" ry="145"/>
+    <path d="M400 130L400 255M515 166L458 270M599 265L500 327M630 400L515 400M599 535L500 473M515 634L458 530M400 670L400 545M285 634L342 530M201 535L300 473M170 400L285 400M201 265L300 327M285 166L342 270"/>
+  </g>
+</svg>
