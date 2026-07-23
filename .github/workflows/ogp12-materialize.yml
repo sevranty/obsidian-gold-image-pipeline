@@ -44,3 +44,5 @@ jobs:
           git add -A
           git commit -m "🔗OGP#12 • 🎴Cover • materialize verified binary assets"
           git push origin HEAD:ogp-012-repository-cover
+
+# One-shot workflow; removed by its own successful commit.
