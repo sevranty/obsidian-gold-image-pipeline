@@ -2,6 +2,10 @@
 
 A mono-style Agent Skill for turning one or more visual references into one isolated black-and-gold digital sculpture, or for repairing an existing Obsidian Gold asset under explicit preservation constraints.
 
+![Obsidian Gold transformation from a self-authored wireframe reference to a faceted obsidian-and-gold portal](assets/repository-cover.png)
+
+The repository cover is a self-authored deterministic geometry example approved in [OGP#12](https://github.com/sevranty/obsidian-gold-image-pipeline/issues/12). It demonstrates the transformation contract visually without claiming live third-party generator quality.
+
 ## Status
 
 | Item | Value |
@@ -10,6 +14,7 @@ A mono-style Agent Skill for turning one or more visual references into one isol
 | Release candidate | `0.1.0-rc.1` |
 | Publication | Not published |
 | Deterministic pilot evidence | PASS |
+| Repository cover | Approved OGP#12 asset |
 | Live image-generator aesthetic claim | Not established |
 | GitHub Actions claim | None |
 
@@ -190,18 +195,27 @@ The iteration budget is one initial generation, up to two targeted repairs, and 
 | [Pilot validation review](docs/reviews/ogp13-pilot-validation.md) | 5 accepted structural cases, visible delivery records, failure recovery, and clean-install smoke |
 | [Install smoke report](reports/ogp13-install-smoke.json) | PASS |
 | [Package manifest](dist/ogp-skill-manifest.json) | `0.1.0-rc.1`, `release_published: false` |
+| [Cover validation](docs/reviews/ogp12-cover-validation.md) | ACCEPT, 95/100, no critical defects |
 
 The pilot uses deterministic programmatic fixtures. It validates orchestration and artifact contracts but does not establish live third-party image-generator aesthetic success. No tag, GitHub Release, marketplace submission, committed release archive, or public binary has been published.
 
 ## Visual examples
 
-No public before-and-after image is claimed in this documentation draft. The current pilot evidence is structural and deterministic. Approved repository cover and social-preview assets belong to [OGP#12](https://github.com/sevranty/obsidian-gold-image-pipeline/issues/12) and must use self-authored or explicitly permitted source material with provenance and QA evidence.
+The repository cover is the approved OGP#12 visual example. It uses one self-authored portal subject shown as a wireframe reference and a faceted final state.
+
+- Source: [`assets/source/reference-portal-wireframe.svg`](assets/source/reference-portal-wireframe.svg)
+- Manifest and export checksums: [`assets/cover-source-manifest.json`](assets/cover-source-manifest.json)
+- Benchmark and concept decision: [`docs/research/project-cover-benchmark.md`](docs/research/project-cover-benchmark.md)
+- QA review: [`docs/reviews/ogp12-cover-validation.md`](docs/reviews/ogp12-cover-validation.md)
+
+This asset demonstrates the repository's transformation contract. It is not presented as proof of live external image-generator quality.
 
 ## Repository structure
 
 ```text
 README.md                         public project entry point
 CONTRIBUTING.md                   contribution and review contract
+assets/                           repository cover, social preview, concepts, source and manifest
 docs/architecture.md              scope and component boundaries
 docs/research/                    public research and comparisons
 docs/reviews/                     review and validation records
@@ -240,6 +254,8 @@ The README links these contracts and does not redefine their normative values.
 ## Research decisions
 
 The public documentation structure was compared with current OpenAI Agent Skills guidance, the OpenAI `skill-creator` and `imagegen` examples, the Agent Skills open-standard ecosystem, and a small set of public skill repositories. See [analogous-skills-analysis.md](docs/research/analogous-skills-analysis.md).
+
+The repository cover decision is documented in [project-cover-benchmark.md](docs/research/project-cover-benchmark.md).
 
 ## Contributing
 
