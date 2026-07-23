@@ -15,9 +15,13 @@ class EvalRunnerTests(unittest.TestCase):
         return subprocess.run([sys.executable, str(RUNNER), "--root", str(root), "--output", str(root/"baseline.json"), "--raw-output", str(root/"raw.json")], capture_output=True, text=True)
 
     def test_baseline_passes(self) -> None:
-        result=self.run_runner(SOURCE)
-        self.assertEqual(result.returncode,0,result.stderr+result.stdout)
-        self.assertEqual(json.loads(result.stdout)["status"],"pass")
+        with tempfile.TemporaryDirectory() as tmp:
+            root=Path(tmp); self.copy_suite(root)
+            result=self.run_runner(root)
+            self.assertEqual(result.returncode,0,result.stderr+result.stdout)
+            self.assertEqual(json.loads(result.stdout)["status"],"pass")
+            self.assertTrue((root/"baseline.json").is_file())
+            self.assertTrue((root/"raw.json").is_file())
 
     def test_trigger_mismatch_fails(self) -> None:
         with tempfile.TemporaryDirectory() as tmp:
