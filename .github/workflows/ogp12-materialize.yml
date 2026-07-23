@@ -6,6 +6,15 @@ on:
       - ogp-012-repository-cover
     paths:
       - .github/workflows/ogp12-materialize.yml
+  pull_request:
+    branches:
+      - main
+    types:
+      - opened
+      - synchronize
+      - reopened
+    paths:
+      - .github/workflows/ogp12-materialize.yml
 
 permissions:
   contents: write
@@ -16,6 +25,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
         with:
+          ref: ogp-012-repository-cover
           fetch-depth: 0
       - uses: actions/setup-python@v5
         with:
