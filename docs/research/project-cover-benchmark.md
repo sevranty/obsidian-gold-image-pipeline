@@ -26,9 +26,9 @@ Status: selected concept approved for repository use.
 
 | Concept | File | Strength | Risk | Decision |
 | --- | --- | --- | --- | --- |
-| Portal transformation | `assets/concepts/concept-portal.png` | The same silhouette is clearly visible before and after transformation; reads as a pipeline at small size. | Repeated subject states could be misread as two objects without a clear transformation bridge. | **Selected** |
-| Folded prism | `assets/concepts/concept-prism.png` | Strong angular silhouette and simple facets. | Reads more like an abstract logo than a reference-to-result pipeline. | Rejected |
-| Neural core | `assets/concepts/concept-core.png` | Communicates AI and internal transformation. | More decorative and less immediately legible as a source-to-final conversion. | Rejected |
+| Portal transformation | `assets/concepts/concept-portal.svg` | The same silhouette is clearly visible before and after transformation; reads as a pipeline at small size. | Repeated subject states could be misread as two objects without a clear transformation bridge. | **Selected** |
+| Folded prism | `assets/concepts/concept-prism.svg` | Strong angular silhouette and simple facets. | Reads more like an abstract logo than a reference-to-result pipeline. | Rejected |
+| Neural core | `assets/concepts/concept-core.svg` | Communicates AI and internal transformation. | More decorative and less immediately legible as a source-to-final conversion. | Rejected |
 
 ## Selected direction
 
@@ -41,6 +41,10 @@ wireframe reference
 ```
 
 The composition deliberately contains no words. Repository identity remains in the surrounding GitHub/README context rather than inside the image.
+
+## Versioned asset model
+
+The repository commits canonical SVG assets. PNG/WebP renditions are review/build outputs, not published release binaries. GitHub social-preview Settings remain unchanged because Settings writes require a separate explicit owner action.
 
 ## Rights and provenance
 
