@@ -11,7 +11,7 @@ A successful local adapter result must preserve all provenance fields:
 - provider revision: exact non-empty revision identifier;
 - canonical configuration SHA-256: 64 lowercase hexadecimal characters;
 - asset path: non-empty OGP-owned materialized path;
-- asset checksum: `sha256:` followed by 64 lowercase hexadecimal characters.
+- asset checksum: exactly 64 lowercase hexadecimal characters (without a `sha256:` prefix), matching the exact-current Presento `validate_provider_result` contract.
 
 Expected outcome: `accepted`.
 
