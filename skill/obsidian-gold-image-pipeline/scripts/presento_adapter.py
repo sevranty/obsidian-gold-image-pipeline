@@ -51,7 +51,10 @@ def _accepted_bytes(manifest_path: Path, asset_path: Path) -> tuple[bytes, dict[
         manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
     except (OSError, ValueError) as exc:
         raise AdapterError("invalid_manifest", "OGP manifest cannot be read") from exc
-    if not isinstance(manifest, dict) or manifest.get("qa_result", {}).get("verdict") != "ACCEPT":
+    if not isinstance(manifest, dict):
+        raise AdapterError("invalid_manifest", "OGP manifest must be an object")
+    qa_result = manifest.get("qa_result")
+    if not isinstance(qa_result, dict) or qa_result.get("verdict") != "ACCEPT":
         raise AdapterError("not_accepted", "OGP QA verdict is not ACCEPT")
     if manifest.get("selected_output") != asset_path.name:
         raise AdapterError("asset_mismatch", "asset does not match selected_output")
