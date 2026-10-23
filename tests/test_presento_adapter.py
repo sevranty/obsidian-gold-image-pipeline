@@ -98,6 +98,21 @@ class PresentoAdapterTests(unittest.TestCase):
             self.result()
         self.assertEqual(caught.exception.code, "not_accepted")
 
+    def test_malformed_qa_manifest_fails_closed(self) -> None:
+        for malformed in (None, [], "ACCEPT"):
+            with self.subTest(qa_result=malformed):
+                self.data["qa_result"] = malformed
+                self.save_manifest()
+                with self.assertRaises(adapter.AdapterError) as caught:
+                    self.result()
+                self.assertEqual(caught.exception.code, "not_accepted")
+
+    def test_non_object_manifest_fails_closed(self) -> None:
+        self.manifest.write_text("[]", encoding="utf-8")
+        with self.assertRaises(adapter.AdapterError) as caught:
+            self.result()
+        self.assertEqual(caught.exception.code, "invalid_manifest")
+
     def test_missing_checksum_fails_closed(self) -> None:
         del self.data["selected_output_sha256"]
         self.save_manifest()
